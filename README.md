@@ -1,2 +1,2 @@
-# PaginasMiguel25
-La programacion es dinamica y didactia
+# Miguel Aljandro
+Pagino dedica a la materia de Construye Paginas web
