@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+    <thead>
+    <tr>
+        <th>Ataque</th>
+        <th>Descripcion</th>
+        <th>Impato</th>
+        <th>Ejemplo</th>
+        <th>Imagen</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    <script>
+        //El JSON(JavaSript, Objet Natation) con la informaion sobre los ataques de ciberseguridad
+        //Declaro la variable en forma de CONST para que sea "global"
+        const ataques = [
+        //lo  que sigue son los elementos de este json separados por comes ,el final no se la coma para decirle queya acabo.
+        {
+         //Estos son los nombres de cada variable que voy a mandar llamar en el HTML para la tabla .
+         "ataque": "Phishing", //Se agrega la coma para deir que continua.
+         "descripcion": "Engaña al usuario para robar las credenciales mediante correos falsos.",
+         "impacto": "Robo de identidad, pérdida de datos.",
+         "ejemplo": "Correo falso de un banco solicitando datos.",
+         "imagen": "https://www.google.com/imgres?q=ciberseguridad%20y%20ataques%20informaticos&imgurl=https%3A%2F%2Fwww.piranirisk.com%2Fhs-fs%2Fhubfs%2Fhs_marketplace_assets%2Fciberataques_mas_comunes.jpeg%3Fwidth%3D800%26name%3Dciberataques_mas_comunes.jpeg&imgrefurl=https%3A%2F%2Fwww.piranirisk.com%2Fes%2Fblog%2Fataques-ciberneticos-causas-y-consecuencias&docid=lYiOYQWnM8oshM&tbnid=lYtzJuBUL8MoOM&vet=12ahUKEwj5kd_jlOOPAxUa_8kDHY0MC04QM3oECEwQAA..i&w=800&h=400&hcb=2&ved=2ahUKEwj5kd_jlOOPAxUa_8kDHY0MC04QM3oECEwQAA"
+        },
+        {
+         "ataque": "Malware",
+         "descripcion": "Software malicioso diseñado para dañar o comprometer sistemas informáticos.",
+         "impacto": "Daño a sistemas, pérdida de datos, acceso no autorizado.",
+         "ejemplo": "Un archivo adjunto infectado en un correo electrónico.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ikusi.com%2Fmx%2Fblog%2Fque-es-malware%2F&psig=AOvVaw0U_rLKU86CWcejSVotjZVz&ust=1758315269848000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJDxzvuY448DFQAAAAAdAAAAABAE"
+        },
+        {
+         "ataque": "Virus",
+         "descripcion": "Programa malicioso que se replica y se propaga entre archivos y sistemas.",
+         "impacto": "Corrupción de datos, lentitud del sistema, infección masiva.",
+         "ejemplo": "Un documento Word infectado que activa el virus al abrirse.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.muycomputerpro.com%2F2015%2F03%2F18%2Fcinco-virus-mas-peligrosos-historia&psig=AOvVaw0VCFAX1_Iob2_UcGxq7Rv6&ust=1758315304050000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPCYq42Z448DFQAAAAAdAAAAABAE"
+        },
+        {
+         "ataque": "Worm",
+         "descripcion": "Tipo de malware que se propaga automáticamente sin necesidad de intervención del usuario.",
+         "impacto": "Consumo excesivo de recursos, propagación rápida en redes.",
+         "ejemplo": "Worm que explota vulnerabilidades en redes para infectar múltiples dispositivos.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fthebluebox.wordpress.com%2Fque-es-un-gusano-informatico%2F&psig=AOvVaw3_3n3wl1rusZarVCOwxu96&ust=1758315355639000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCIC1oLKZ448DFQAAAAAdAAAAABAE"
+        },
+        {
+         "ataque": "Botnet",
+         "descripcion": "Red de dispositivos infectados controlados remotamente por un atacante.",
+         "impacto": "Realización de ataques DDoS, minería de criptomonedas, distribución de malware.",
+         "ejemplo": "Millones de dispositivos IoT infectados usados para atacar servidores.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.akamai.com%2Fes%2Fglossary%2Fwhat-is-a-botnet&psig=AOvVaw2OTOzfDz4k3waaID_whmXh&ust=1758315424818000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLDxm8eZ448DFQAAAAAdAAAAABAR"
+        },
+        {
+         "ataque": "DDoS",
+         "descripcion": "Ataque de denegación de servicio distribuido que sobrecarga un servidor con tráfico.",
+         "impacto": "Interrupción de servicios, pérdida de ingresos, reputación dañada.",
+         "ejemplo": "Ataque DDoS contra un sitio web bancario durante una hora crítica.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deltaprotect.com%2Fblog%2Fataques-ddos-que-son&psig=AOvVaw0DnwgLP-mjt6bqcSGmre4W&ust=1758315482801000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNjThueZ448DFQAAAAAdAAAAABAS"
+        },
+        {
+         "ataque": "Packet Sniffer",
+         "descripcion": "Herramienta que captura tráfico de red para obtener información sensible.",
+         "impacto": "Intercepción de contraseñas, datos personales y comunicaciones privadas.",
+         "ejemplo": "Captura de datos en una red Wi-Fi pública sin cifrado.",
+         "imagen": "https://www.google.com/imgres?q=Packet%20Sniffer%20informatico&imgurl=https%3A%2F%2Fimpulso06.com%2Fwp-content%2Fuploads%2F2023%2F03%2FAtaques-sniffer-que-son-y-como-protegerte.png&imgrefurl=https%3A%2F%2Fimpulso06.com%2Fataques-sniffer-que-son-y-como-protegerte%2F&docid=6hYh_aFBou7JRM&tbnid=gaiRDc_Ic5Gt_M&vet=12ahUKEwjMiaL7meOPAxWg5MkDHd_PNxsQM3oECFIQAA..i&w=2000&h=1200&hcb=2&ved=2ahUKEwjMiaL7meOPAxWg5MkDHd_PNxsQM3oECFIQAA"
+        },
+        {
+         "ataque": "IP Spoofing",
+         "descripcion": "Técnica que permite a un atacante hacerse pasar por otra IP legítima.",
+         "impacto": "Acceso no autorizado, evasión de controles de seguridad.",
+         "ejemplo": "Un atacante envía paquetes con una dirección IP falsa para engañar a un firewall.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fus.norton.com%2Fblog%2Fmalware%2Fwhat-is-ip-spoofing&psig=AOvVaw2wfrSG24E4MzdBLjH1Japf&ust=1758315585692000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMDw9ZOa448DFQAAAAAdAAAAABAK"
+        },
+        {
+         "ataque": "MITM (Man-in-the-Middle)",
+         "descripcion": "Atacante intercepta y posiblemente altera la comunicación entre dos partes.",
+         "impacto": "Robo de datos sensibles, modificación de mensajes.",
+         "ejemplo": "Un atacante interrumpe la conexión entre un usuario y un sitio web seguro.",
+         "imagen": "https://www.google.com/imgres?q=MITM%20(Man-in-the-Middle)%20informatico&imgurl=https%3A%2F%2Fwww.ibm.com%2Fcontent%2Fdam%2Fconnectedassets-adobe-cms%2Fworldwide-content%2Fcreative-assets%2Fs-migr%2Ful%2Fg%2F12%2F6e%2Fman-in-the-middle-diagram.png&imgrefurl=https%3A%2F%2Fwww.ibm.com%2Fmx-es%2Fthink%2Ftopics%2Fman-in-the-middle&docid=4ayD-5KO-OcJPM&tbnid=BpM3JkDJD75_wM&vet=12ahUKEwjs5oetmuOPAxUUL9AFHcgjDLEQM3oECBUQAA..i&w=3840&h=2160&hcb=2&ved=2ahUKEwjs5oetmuOPAxUUL9AFHcgjDLEQM3oECBUQAA"
+        },
+        {
+         "ataque": "DNS Spoofing",
+         "descripcion": "Manipulación de registros DNS para redirigir tráfico a sitios fraudulentos.",
+         "impacto": "Redirección a páginas falsas, robo de credenciales.",
+         "ejemplo": "Usuario intenta acceder a su banco pero es redirigido a una página falsa.",
+         "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.keyfactor.com%2Fes%2Fblog%2Fwhat-is-dns-poisoning-and-dns-spoofing%2F&psig=AOvVaw1shfRlsy5CKnpxzZCRj3FN&ust=1758315781412000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCH2_Ka448DFQAAAAAdAAAAABAE"
+        },
+        {
+         "ataque": "Rootkit",
+         "descripcion": "Software oculto que proporciona acceso privilegiado al sistema.",
+         "impacto": "Control total del sistema, instalación de malware, evasión de detección.",
+         "ejemplo": "Rootkit instalado en un servidor que permite al atacante ejecutar comandos remotos.",
+         "imagen": "https://www.google.com/imgres?q=Rootkit%20informatico&imgurl=https%3A%2F%2Fwww.ceupe.com%2Fimages%2Feasyblog_articles%2F4154%2Fb2ap3_amp_rootkit.png&imgrefurl=https%3A%2F%2Fwww.ceupe.com%2Fblog%2Frootkit.html&docid=4dVowgFieE_xOM&tbnid=gXVxp_Y8C-4MAM&vet=12ahUKEwitkpuAm-OPAxWT4skDHQkbLbwQM3oECA4QAA..i&w=720&h=456&hcb=2&ved=2ahUKEwitkpuAm-OPAxWT4skDHQkbLbwQM3oECA4QAA"
+        }
+    ];
+    </script>
+</body>
+</html>
