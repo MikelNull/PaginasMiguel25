@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link
+      href="https://fonts.cdnfonts.com/css/schnoerkel-caps"
+      rel="stylesheet"
+    />
+
+    <title>Miguel Alejandro - Malware (Texto)</title>
+
+    <style>
+      :root {
+        --pomp-and-power: #8d6b94ff;
+        --feldgrau: #3c493fff;
+        --ash-gray: #b3bfb8ff;
+        --chili-red: #d64933ff;
+        --red: #ff101fff;
+        --baby-power: #f0e6f6;
+      }
+
+      body {
+        background-color: var(--baby-power);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-brand {
+        color: var(--feldgrau);
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 2.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        padding: 0.5em;
+        background-color: var(--feldgrau);
+        color: white !important;
+      }
+
+      .navbar-brand:hover {
+        color: white !important;
+        text-decoration: none;
+      }
+
+      .nav-link-white {
+        color: rgb(36, 34, 34) !important;
+      }
+
+      .jumbotron-ash-gray {
+        background-color: var(--ash-gray) !important;
+      }
+
+      .navbar {
+        background-color: var(--pomp-and-power) !important;
+        border: none;
+      }
+
+      .navbar-nav > li > a {
+        color: rgb(0, 0, 0) !important;
+      }
+
+      /* ESTILO DE TABLA CENTRADA DEL VIDEO (adaptado con colores tuyos) */
+      .tabla-ciber {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .tabla-ciber thead {
+        background-color: var(--feldgrau);
+        color: white;
+      }
+
+      .tabla-ciber th,
+      .tabla-ciber td {
+        padding: 14px 18px;
+        text-align: center;
+        border: 1px solid var(--ash-gray);
+        font-size: 16px;
+      }
+
+      .tabla-ciber th {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .tabla-ciber tr:nth-child(even) {
+        background-color: var(--ash-gray);
+        color: var(--feldgrau);
+      }
+
+      .tabla-ciber tr:nth-child(odd) {
+        background-color: white;
+        color: var(--feldgrau);
+      }
+
+      .tabla-ciber tr:hover {
+        background-color: var(--chili-red);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+      }
+
+      .titulo-seccion {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--feldgrau);
+        font-family: "Schnoerkel Caps", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- TU NAVBAR -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="navbar-brand" href="index.html">Inicio</a>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 1 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/Miguel01.html">Tabla de Malware</a>
+              </li>
+              <li>
+                <a href="/Miguel02.html">Tabla de Malware con images</a>
+              </li>
+              <li>
+                <a href="/Ciberseguridad/Tabla de Malware01.html">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 2 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+                <a href="/tomas03.php">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 3 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+                <a href="/tomas03.php">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- TÍTULOS -->
+    <h1 class="titulo-seccion">Ciberseguridad</h1>
+    <h2 class="titulo-seccion">Tipos de Malware</h2>
+
+    <!-- TABLA CENTRADA -->
+    <table class="tabla-ciber">
+      <thead>
+        <tr>
+          <th>Tipo de Malware</th>
+          <th>Función</th>
+          <th>Impacto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Virus</td>
+          <td>Autoreplicable, infecta archivos</td>
+          <td>Daño de datos y sistemas</td>
+        </tr>
+        <tr>
+          <td>Gusanos</td>
+          <td>Se propaga por las redes</td>
+          <td>Interrupción de la red, agotamiento de recursos</td>
+        </tr>
+        <tr>
+          <td>Caballo de Troya</td>
+          <td>Se disfraza de software legítimo</td>
+          <td>Robo de datos, control de sistemas</td>
+        </tr>
+        <tr>
+          <td>Ransomware</td>
+          <td>Cifra archivos y exige pago</td>
+          <td>Extorsión, pérdida de acceso a datos</td>
+        </tr>
+        <tr>
+          <td>Software espía (Spyware)</td>
+          <td>Supervisa en secreto la actividad del usuario</td>
+          <td>Violación de privacidad, robo de datos</td>
+        </tr>
+        <tr>
+          <td>Software publicitario (Adware)</td>
+          <td>Muestra anuncios no deseados</td>
+          <td>Reducción de rendimiento, violación de privacidad</td>
+        </tr>
+        <tr>
+          <td>Rootkit</td>
+          <td>Oculta software malicioso</td>
+          <td>Acceso no autorizado, amenazas persistentes</td>
+        </tr>
+        <tr>
+          <td>Keylogger</td>
+          <td>Registra pulsaciones de teclas</td>
+          <td>Robo de credenciales, filtración de datos</td>
+        </tr>
+        <tr>
+          <td>Fileless Malware (Sin archivos)</td>
+          <td>Opera en memoria, sin archivos en disco</td>
+          <td>Ataques sigilosos y difíciles de detectar</td>
+        </tr>
+        <tr>
+          <td>Cryptojacker</td>
+          <td>Minería de criptomonedas sin consentimiento</td>
+          <td>Problemas de rendimiento, consumo excesivo de recursos</td>
+        </tr>
+        <tr>
+          <td>Botnet (Red de bots)</td>
+          <td>Red de dispositivos infectados controlados remotamente</td>
+          <td>Ataques DDoS, distribución de spam</td>
+        </tr>
+        <tr>
+          <td>Bomba Lógica</td>
+          <td>Ejecuta código malicioso al cumplirse una condición</td>
+          <td>Destrucción de datos, daños al sistema</td>
+        </tr>
+        <tr>
+          <td>Wiper (Destructor de datos)</td>
+          <td>Destruye o borra datos de forma intencionada</td>
+          <td>Pérdida irreversible de información</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
