@@ -1,193 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <style>
-    :root{
-      --salmon: #f08e7aff;
-            --ghost-white: #f6f6fdff;
-            --alice-blue: #d7e6edff;
-            --tiffany-blue: #7fdcc8ff;
-            --yinmn-blue: #324d71ff;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    body{
-      font-family: 'Times New Roman', Times, serif;
-      background-color: var(--yinmn-blue) ;
-      color: white;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link
+      href="https://fonts.cdnfonts.com/css/schnoerkel-caps"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/delffo" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/diaclone" rel="stylesheet" />
+    <link
+      href="https://fonts.cdnfonts.com/css/cocaine-nosejob"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/cocaine-nosejob"
+      rel="stylesheet"
+    />
 
-    }
+    <title>Miguel Alejandro</title>
+  </head>
 
-    .tabla-ciber{
-      width: 90%;
-      margin: 40px auto;
-      border-collapse: collapse;
-      font-family: 'Times New Roman', Times, serif;
-      box-shadow: 0px 4px 15px black;
-      background-color: var(--salmon);
-      border-radius: 12px;
-      overflow: hidden;
-    }
+  <body>
+    <style>
+      :root {
+        --pomp-and-power: #8d6b94ff;
+        --feldgrau: #3c493fff;
+        --ash-gray: #b3bfb8ff;
+        --chili-red: #d64933ff;
+        --red: #ff101fff;
+      }
+      body {
+        background-color: var(--baby-power);
+        font-family: "DiaClone", sans-serif;
+      }
+      .navbar-brand {
+        color: var(--feldgrau);
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 2.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        padding: 0.5em;
+        background-color: var(--feldgrau);
+        color: white !important;
+      }
+      .navbar-brand:hover {
+        color: white !important;
+        text-decoration: none;
+      }
+      .nav-link-white {
+        color: rgb(36, 34, 34) !important;
+      }
+      .jumbotron-ash-gray {
+        background-color: var(--ash-gray) !important;
+      }
 
-    .tabla-ciber thead{
-      
-    }
-  </style>
-    <table class="tabla-ciber" id="tablaCiberseguridad">
-        <thead>
-            <tr>
-                <th>Ataque</th>
-                <th>Descripcion</th>
-                <th>Impacto</th>
-                <th>Ejemplo</th>
-                <th>Imagen</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <script>
-        //El json con la info sobre los ataques de ciberseguridad
-        const ataques = [
-           {
-             //nombres de variable a llamar
-             "ataque": "phishing", //se le pone coma para indicar que continua y aun no acaba
-             "descripcion": "Engaña al usuario para robar las credenciales maediante correos falsos,",
-             "impacto": "Robo de identidad, perdida de datos,",
-             "ejemplo": "correo falso de un banco solicitando datos,",
-             "imagen": "https://th.bing.com/th/id/OIP.rQz7RNImD_BlgaaNtrShLQHaEX?w=263&h=180&c=7&r=0&o=7&pid=1.7&rm=3" //busca una imagen y pega la liga aqui
-           },
+      .navbar {
+        background-color: var(--pomp-and-power) !important;
+        border: none;
+      }
 
-            {
-             //nombres de variable a llamar
-             "ataque": "ransomware", 
-             "descripcion": " tipo de malware que bloquea el acceso a los datos de una víctima y exige un pago para restaurar el acceso.",
-             "impacto": "Robo de datos personales e informacion de tu dispositivo,",
-             "ejemplo": "correos o descargas maliciosas,",
-             "imagen": "https://th.bing.com/th/id/OIP.6sSyZmGfWFV9nQQIcxSjlQHaEo?w=257&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
+      .navbar-nav > li > a {
+        color: rgb(0, 0, 0) !important;
+      }
+      .sung-section {
+        position: relative;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: url("17060126360942.jpg") no-repeat center center/cover;
+      }
+      .sung-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 1;
+      }
+      .sung-text {
+        position: relative;
+        z-index: 2;
+      }
+      .sung-text h1,
+      .sung-text h2,
+      .sung-text p {
+        font-family: "Cocaine Nosejob", sans-serif;
 
-            {
-             //nombres de variable a llamar
-             "ataque": "virus", 
-             "descripcion": "programa malicioso que se auto replica y se propaga a otros sistemas para dañar, alterar o robar información ",
-             "impacto": "lentitud del sistema y perdida de datos.",
-             "ejemplo": "Discos o memoerias usb con malware",
-             "imagen": "data:image/png;base64,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" 
-           },
-           
-                {
-             //nombres de variable a llamar
-             "ataque": "worm", 
-             "descripcion": "que se replica a sí mismo y se propaga de forma autónoma a través de redes",
-             "impacto": "robo de informacion e instalacion de puertas traseras.",
-             "ejemplo": "Discos o memoerias usb con malware",
-             "imagen": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhMXGBgXFxgXFxodHxgaGR8XGBUYFx0ZHSggGhomHRcXIjEiJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy8lICUvLS0vLTAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKUBMQMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAAMEBgcCAQj/xABFEAACAQIEAwUFBgMGBQMFAAABAhEAAwQSITEFQVEGEyJhcQcygZGhFCNCUrHhwdHwYnKCkrLxFRYzU8IkotIXQ1Rj4//EABkBAAMBAQEAAAAAAAAAAAAAAAECAwQABf/EAC4RAAICAgIABAQGAwEBAAAAAAABAhEDIRIxBCJBURMyYXEUUoGRofBCseHRBf/aAAwDAQACEQMRAD8Axh75J1knzrwhjvt0FeW75Ohr1Q0wBVrslVHqKPTzpy1iGB8OYnXYxXi2CDNwNHUaj49Kn4XC87Tj0Oo/mKdJv+7Jzml3/wAImFw/eHKXCn8p0+h3oth+HPb96yLq/wBk6x/dOh+FIvpF+xK/mXxAefVan8NwkicJiY55D4h/lOq13XQnJy76/j90cYO1h2MW7z4e5+RjlEnqr6H0Bow1vE2xF2xbxVrqkBo6lW0J8hUbEYpgMuMwgZP+5aGYesHVfWa9wqWQpfB47u1GpS4wKgeavqOk1Nsokd4NMIzRYv3MHe3yOSok9Ufwn0Boni3xNtD9qs2cVZGrOpVSB+Yq/hJ8gareO7W51a3dw1i6w2fxZOfiCsA31FVu2XYBPEUzeCScqnSYkxIzD5jrS0OWHiHGcPbUNgDftOdSM0Wx1BQ5szekDXc0Jx/EMTi9bjlwsHoqecDSfOJrrA8OAuhH8Utk0PhDHQagHSSKsfDuAS8XSCHa7aygRluIpZWnnIBI050XUVsnLJ7Fbw/DM6ZoLtIWBoFJ93XaTt8aI3+GN3CuxgxcXKANGtHYxvMk0U4VaGTEhQBNi1dAHJrZ8UfEfWujd7zB3W5rfJ+Drr9SaDybpGeU7I9/CqL9rwgKxRh6MsH60LsYeLt9Oij6GKI8Qvfd4S50VR/lNHbvA7bYO9jgT3ouMhXllMfXWaHLqxVbuvqVLs3s4/tVYfsrupVEJMbKCfoKq/CeIizccGNToTsKJYftU9m4LtozcWYmcuvkN6rTrRRrz7XYOvjISGU+YIgj4GoV90/CCKncb7QXcSxe9BuHmAAAOQAFBXNDkVUCWoiDTd81xhBmYAmAeZq3jgGCyeLFgNE/tRptCSkoS2UVt6VO4tAHIBkToetNVNqjUnas9p1BTQNO2q5AkFeBWS2YATWm9luzOVgz5WUjpsf41SexQYM2QAtHOtJ4VevKsXFCabg02WbjAxpReVtlC7WcXvYLGMLFyFgHLuNZnSoHEeK4nElbuIRih08IIGuxq28Z7ELcF28LpdzqAeUcqrz4bG2rCKGFy0SMoABgjl1rscoyVxY0muqNb7M4WxhrFpHE3HGkCdYk7cqH8W7VXbV0gcPvPbGgYASfQHlVItdvb9m/ZN2zl7oEEdQdJH+9XnhXbN+ISuHy20DBXdhLLPReXqelQljp3I0wyWqWgpltXrIu3LRtSJyuACPIxWecb4jbtEmRA2FamOyNtgRiDcxAJn7xzA/wrCkc9poZjfZ9w26v/QYeaNcH8Yrscowds7NjlNUtHz1x7iZvXM2wG1DrjTWpdsvZcLPisOxBnLmiZGuUxv5GP3y5rZVobQjeqt8tghFRXH2DnAbJIMDaprrFDeDYq5bMr7p3qy2cbadlDiJMT0nma1Qk1HowZcfKb2C+8NKrb/wbD/m+tKh+Ij7M78LL6GR093unQjnXDqOtcVlTo9Tsm2OJOu+v6/Op9i9h7h8Uo3XY/MafOgdKnWR9PZKWGL2tfYuti1iEE22W8vRtG+DDQ/Glfu4VzF+2+Hu7hiCvxDLv6kVU8Jjbls+Byvpt8tqkrau32kktzLsSQOpPMAeQpnK+hFj49/v0Fn7S3bTZbV03LfI3VEj0MyfU/KhN7vLrm6fE0SzEAfoANvoKIcJ4Yri5mzG5b1gZQIHvTrJ2O3OKKcJsAWrqXNcozqFYxALBwdpPhI1mM3nStpdglNRA1rhgIUqc7tGg0gzEawDzPw33qyYPhIviy9wBUuBgFTwwyErlbc8z56chUvC4ZDYvKgACFH0/CHi3c1+Fz501gcR9yx2a3iA4HTvRt8GuN8qm8jrRFztWd8RtZbSuB/1LKuQP+5YIZj67CiGLxITF9A9yxdH+Id2foTQ7G4oPglYb2715T/deX/lQ/jeImzhrn4haQE+dto/jU0r7+ol+n2J/CfBjrlsj3lv24+OZfoKgcJvRaxVs/iVGHqKkcVxUY5bo2LK2nRkAoTYMXOgcEfWqRje/sKcXXPcqPyz9DXWKx9xSFznumMlMxgkjcjYmvHfKLiGD0PrvQrFt4UM7GPrVaHhG2RMW33h9alpbqJi1hz6zRS1sKMFtmjI6iqGMbYgqTzFRn8qufDuxuIxdnvUAyrtmMTHSgN3hTISGGo0IrmrdIWM6imwUls7xTlzkaeezG01GIO0V3SGT5bFctSJplrFFsBwu442gedSLvC1RgtwsoP4yNPnRcG9irNulsAFD0qZg8Bcc+FTViPC7arnzZ0G5QT8+lF+zvD2xDL3QJSYMeEr69a7jFK2xJ553xjHZO7K4W3hkMsC7CaG8Q7QO1wiTA0EVf7fZVVklCWO5FUrtL2SZWzWpjmDyrHNxyMXNFpL+fuDOD4x7d3MbzvOkEnn11qv4vEYmy7IruFDkgcuulHrOEbDFbl60zJOsH6zWkYHgWHx1mzcyxp4j+k08bg9+o2LnkblJp+hk9vtZfuXAzW0Z8uSSN/WhVniV6xdL2nNtzvl/QjmK3iz2JwlskBQfM71gvHLYW/dA2DsB6AkCrOaaopGNS6Lbw/2s4+0uUlWHp/uB8Kl3vbLjCsKir0IjT5rWamuTSa9i/H7/ALstfFe32LxB8Tx59PSrR2W9nS4hs164fdDkiDM/lnT4671lYo/wXtZicNlCOSq+6CT4f7pGo9NqPJtUhfhpbSNcxns6wNvK2W4VGjLnOsxDAKAZHQbgnSYqDxP2c4cg9xeuW25BjnX5GG+tVzCe1y+ohrSN1JGp+IImvMV7WbzCBaRfh/Nj+lIlkT+b+Tnx/K/7+o9/yBi/z2v8/wD/ADpUA/8AqBiP6y//AApVblP8y/kj8Nfkf8f+lSLVzlovhbFl9Jg9DRK32ckTGnWisLY0vFQg6kVWKRq1f8r3GYKq77E6A+QJ0nyofieAurFdCRvGsepGlK8bQ0fEQYGU0e4BjIcBgCjSrKdpiVMbHY70IxVk2zlO9LB3cp+R+VL9BskecdFhwlzusRpsywfOP5wfnT2Eu5buU6gqy69CANfjbPzodjLniRuja+h/2Pzru5cMqw/C0H4x/JvnTNWY3Hkvug3wDE/ePaJ0u2Xt/GJn5h/nUPB4ohr4/OmePNTnH+r6VDS4VdHH4WM+mh/8zSz+LN5sPnOn+mhw7Fa0TrF+LN63yLI4+eU/QUxc8VhE/Ibg+Bhv1qKboBCnWVUH5K37VGa+dW8p+RplFIZQZLu386gz4gAB/gri/iSSgPIQPjUNb2kjr+teN+E76foaKHUB9rpOb0/SmLqTbEcjTqCHMyZ5RVi4Nwe02uKui3aiYjU+VM1q2cnTSRWjgWuvp0FGUwqWAC/ibp/Om8XjURiLGiT4Sd4rvg/Z/FYxvu7bEc3Og+ZprjBWTayZHxekOYrtTiHUWlcpb2ypp9RrRm1w64yL3iZUiRcG/wAasnA/ZSohr1whuaqR+prQbXBrSJlKZhEeIzWWfioLrZT4Tf0SMeHABc0tguT+UfrRfh3s6eMzpqdhI09Qa1HC2rSDKiKo/sioeLxhQx/UVCXjJf4oKxRS8zsqN7sCblkW3buxO43p7BdgFCC3cxVy5bH4Sq7eu9WTD8Xtvs6N1AYT8qg4/iAtNqdDqKlLPmb9hnFYo01SJOA7O4bDWilu3Ns+8Dr86m4Q2kEKigf2QB+lB7HaK2DBuIDHuswBIOmk1XOOcfew7ZFDR4lU7EdKTjkm9nTycFGT0nqy/Yu+FXOuoG/UftQXF42zd8LMub6idjQLgPa/vdWXLyIgiZ3EE1Vu0V1UxR1kDVTJHhOsGOXlVI43excuaEJU/MutMKYvE3rF823yPh3MgkajqB1q3diSCbiofBoQOk8vpWdcQ4v3tsqTtqPUVcPYviM7XgTyXl61anoz4MssmVey19f+l3XDlyy5YMHUnfSvl/jlsreuqdw7g/AkV9QdrsWUwl0zEI0GNjFfLGIuk76+dVgj0JfMqIrVxXTVzTMojwV6a6nauTQCKvDSpGuOPKVKlQOHswolwzjN6xrbfT8jaqfh/KhJau0aqKQkoJrZoF3tob9oKLa2wdHRRofIk7g9KCNjWgqDC8h+k9aDcLbxFaLW7M9Pjz8qpH5TFkjxmwVxO3sfhUVMojeZ16RRPiSjIaDVOWmacLuAYIkFT0/0nX9DUhFPinaFb/xP+pqbwkEKx/KSfgNf0+tc3sQTaMc0WfgwY/6Z+NMRpvQ4wgQSPE4H/tafrFN3bhIAjSG/zT/tTF+5KFgdQyt89K4c+ANro366/wAK6wqIQu8NfLbuiMrnTlDKPED8qiNaVXKBs0ztynWK6x2Nd0XxkIGYheQJ3IpFWdwVA0A5b0UmwvSI9ldGB6fpUmxhWYAEZVB3mnu7S3q0M39aUzfxZPp0p+Kj2TcpS+X+/Ynh1TRdT1NdYLA38S+W0hdvoo6sToBXWB4PccpmDKtzRGUZpJ2BAOla12c4Pbs2wmg6qOZ5lyNz9BUfEeI+GicIKwP2W9ndm2VuYhheuDXKPcU/HVvjp5Volm0qgCIA2GwFRrV8DQaDyqRbxc6b/WvIyZZTdyNaokBQfdPzqJe4oiOLVwwxBIB0kDcgnQ/uKcukGY8LfL/agFqxduo6YjJcKNNpo1Mc2B0DbbetHGl2x4uC3L9vcc4zjWsiVAbmoJ36j1oJxXj7PY7zKUYHnvB8pNDe0HGjkKncH5darV7jJa0yHYjStWPHro8zJ4ptOEVr39UyXgseq3C4BkkmMxgE7kCYBNEO0nFs1u0wPUH6VSVxBqxdkeF/bcTaw7NlVszGN4USY8zt8+lUSvZNQyzfFu71sE4hw7q+YhhzB5dKIcRN64FYW7jACJCsRp1MVsPZ/sVYtiRmVZIhVhmykiXeC3LQKRHXpYl4LhwIAuz076/P1emXRtXgnSi5aXp6HzYuLZDBBB89KY4pi85DTrEV9EY7sglwNnC3lO1u4JK/3bh8Uzr4p5DTesr9pHYEYa39ow8hJAZTOk7EeXL5dZrlG3Qj8EoPkjPHxHnWyeyNO5w7uQPEZkeW9ZT2f4E9+4FgkH8UHSOlbdwrs93Nq2tm+bVwCDmUMrT+ZT/Ag00o0q9S2GKUrRH9oHazurfdmw1y1cUhnQSFnk1YFxPDKSWthghOgIreeM9mWXNdu3LMnXKisiz+bLmIZjVJ4jwpfwqB/X0psSj0UyzktmXNhnHKuUw5PlVyxfC6F3sB5Vo+FH0ZOPiJVtFevLBIHKmzRS/gPUVCuYYioyg0aIZExilXpWnLFqTqYH9bUlDt0eQOn1pUY77C9W+X7Uqpx+qI/Ff5WAwK6iK5BryksuSMM8MG+dFzxAD3Dr1GlAlanEaaaMiU8ak7ZIxF7Nvr+n71HuU4Frm4ulcwxpaRN4VfEhSefzn964wi+NrZ/tJUO0xUg1MxX/VDKCZynT5H9D865Cyj39TnBa5kPMEfKlhiSrLBJMR+1PphxmLklRMj47162LyiE0G0n+FUUa7JuV/KdJYCRnbYyBXl3GnZfCKas4a5cJyKzkakjl60Y4LwI3G27xhHhGwnbNz/AIUyftpE5cY7ltgnC4d7h025k7fvVt7P8CcFfuyjGYvNDWz5MpGlWXhPZ9cMve3V7yAfugJg/hgj4grUriHHFxChO6ZVXeTGUDkAOnnUpTXSB5pd6XsD2fDcObOys1x9CikASNWK/kTUefyNWPF8RthLV1BlFxZieoBH0NZtxbhl7EYorlItoEXOdguUEkE+8ZLHTmaf7Q8SlltofBbGURPpHwAFRy401fqJNuK12aDa4upG9GO1fatMAllUUE3M/ij8mWfUnMPkaxrDcSbrVytX7XEsMuGvNlvW/Ej+YEZh1BG6/tUsMIwdsXFkk24vT9CzcA7ZJi7v2d4zOPu3H5gJKn5Hptzmn8TiCDJ3Byt8NKA9iOw32W99pv31cJJQKCoBIIzMSeQJ0qe2JDs5nR2Zh6Ekih4hQbuJWdxVSeyg9sLuW9cXzkfHWqmb/nRvthh79y+7BSEzZAeuUAUCt8O1ygl2PIaxWmOKUopkscIRW39TsXh1HzqfwbjLYfEJdViMhDeEieemoI1BI22NDcdwq5adVZPE2oGh+YGx8jUfEIytDKVMbEUFFovGMbtM+huAe1bBOi94/dXCBmGVmGbnEaxP70aPtE4eSR9ptaT+I7jpprXzbw4CDIoSbpBplCJo5SZ9NcQ9pmDVcy3Wu6ExZtOdBvLMIA36bVTOIduLnEyMNh7JyFkZxmk5EIYg6ZQTl2E7dKxZ7pNWv2dcb+y4u1c0gEhwdJVxlbU8wDPnEUySS12LJN9msdmuxmMXXvSOh8ACDoPAxcj0A86ttrgGMBE4y2RrP3BkbRBFwDryopwjidu4ilHVhyIP6jrRAOPzD6VBSvssoKPRSuI9ksUxLfaBdOmrKBp/dET/AJqr/EOGtb/6iwpMBxqJ2Ct+Vj0PzrVHvAbsP69Kq3bbiuHXD3e/y5ShETqT+EDzmKaO2TyRjVmd43h3lQTFcO8qf4b23w7Ktu8xS4oCszAlWI5yJj4xR22tu6ua26uOqkEfSqcmmQ46KLieH+VDsRgKv2J4f5UJxXD6flYLoo93BVGbC1acRhKHYnD08YWK81A/7UP+zb+R/nXte5V6ilTULa9v9gKKRrsHTauKyHonlOWjrTddA1yOH5pyzqw+Ve2cOWg7L1/WpChbfm1WSvZCUktLs8bh0btp5fvXSXETQamImdqYxF8sddugp7h/C7t6ciyAJO0x5Dc0bSflEptedjF28SddTyohhuCOVD3Zt2mEh8pYTsA2X3R60U4Rw/TvMLDugi7bvpBE7kEmNPLWjWEs2cOwvIBDr4kuCVDGPcU7jXSemlDsWWRRWtEHh/Z/OwCfcOAGUhiyXgOahh+tXm8bNlLd11y3gpRyPfunmGIEZfIcoqD2dDPcYOGCQdCqkAjUg6eDSCFJkgyNK9v8JN0uFxKPlkquu430BlV2EianJ7pix3Hl2ROIY43SG71gg2XYA+s60zjcb928E6qwk7nQjn/vVRx95rzFWvi3DSn5dokuNQPUQNT5Fi9jMVaT7wZ7Z0DjUdPeXTy11kEbggVSitMm4ZJq0/0JVzj11lCTAiCRuah97UOxdDDz6U8KzSbDKFPY+jVPw77UMUVJS7FTuiGSNlqwuNdgFa45AGxYkfHXWpt3iq2rZdtIGnmTsKq2GxxFT7GGRwL2KJFoapb5uRrMehHMDxCSJ1aMOb30Qx45udvoj8O4fiMZJX7uyJLXH5idTPIT/R2olhwqN3HD0Ny7+K8RO87ToBvr+p2K4PhmJxoUMPs+EHu213eN+mYxpmIAUToswbzwfgFq0ioigDlG5PVzpPLXnsNBFaZ5KN0cV6SKPhexispNws9wmS4MBesec7kyKpPbXh5s4jIWLju1IZgZjXTfbSvou3woEEZhmGhkaLIkQOZjbpWRe17B2xiLVsZjcSwMzsR4gWuFRHUDNt1FJGbk6ZZYlDZQcEYU0FFFFu5QdaEg0S8UI1M4cJJ9KhVOsoULA6GB8JE/xFcGXRZOH8Vv4eGtXWXyB0+RpL7ROIhswxLbzqB8ttqCi+SG8pj5ULoiKN9lux3tAxt2A95o5hSVn1ywfrQo4t7zjOSQSAASTufPWg4q4dheHi5isOpG922fgGDH6CipUhJQX6griDMrlb1ofFSrRqNDvynWdQepBjWgqnNauvafrJ+PiTxAbHY6T01+kuLdi8LfUjIFJ/KNB/hOkxAnfQdBGc8c9lbBj3eqkqFK+sMWB0EAzoQDlI0zCEU0x+MoopeG7T462PFlvoOehOmnvJqNY3HMdRRHDdtbL6XFa2f8w+Y1+lCOJ9lsVh9SpgfDQSpOvLz6a8jAe/dba6knqwIbmCZ0MyJ15hvOmFcIyL0cVacFkdWHMgjT16VVeJY03SUte4Pefy/l+tBLuUGVBHUTPwBj1+lEbRN3KiLlToOZ5kk77H0p1ktUS/DqL5MjfZrf56VGf+XH/sfM/wAq9ocWU+IvdlY9a7ybzpFe27UjSuzhn6H13/rlUqZbkhm5GkDlrHPz8v2rzuTAIBgmNufT1qVat5SG35kEaT0Ouo26b12uGbQRIOxXX123oqNgc0iLacjTMR5a1ItYd3ICKWJ5DWiacDhmS54oAYMhEAGCMxiAIPwg7xUqxw1b+VMPo4GZgNDKg6rmIJ0135UyWicsivRDwfCVztadiuIkKiFTlJ568+m1HrfDluSboFnE2zoLYIBVd51001EA/HQV7dxNtLSLdh7iFhJJznotw6Qsg/XUHclg8PcvRduXFt2pDkkhk0ZddCBdym5lcKQRoxmmRCcpMbuYsXLhFtFcvlTUQrNoVUBSAxIBA1zGB6UR4lgMptuW/wDWltbSfjG0wwItOIgg6jLFNG+vet9jQW5QB3EQRcAn+yF05gT0mifCLZdbuRbN1iBINwsQ2+csp8TmCYfRdNeVBy9hVA7azce2h7y1aw5bJkVwCYJ8IJOZwJIk6CdyKj8ew+HRktFCc3/bMsFB0gTz1lm1jWDECdawClLJDj7Q2q23gAFTurl5gdScumi9O8fxtrhuI1tL1zRB4iVQ7NDrIbWB48sxoOdIlsZy1QExHZ3B31AtMjECAFbJcEctitw6789feMBKrxHgV/DtFpmbODKkZSdNiJhxE6iVjNqVBY3XjfehbOS5ZBuDI6tb8SmJKCZKrAgtruKF3OI3VJsMUu2wW7wOrHKcwJCQpIMqN9DIJEgMGTsZclXqZzeteIzKtPMR/tuK9S+6+Y/rmKm8aSLrGGAk+9v1/MfI7k67k61HfBkIHzLB2hhPMRHXWldF9NbPBxDqv1/ankxsmFST6/OoVzbzqfwcwYbwjTxEdPwzoN8p1I2OtLxQrxwq6C2BttIGUO++UbCNyxnkSASSAPEdIBq6dneDLnD3j3lzwxMwJ1WBvMmQIkyICgZyK4Xh1TllAgmd9JKlzEjWYMT72RATmNj4bnukBCFX3ScrByNcxUg5VBmDBk7kwYDN0tEkrekX/guCU+IxyECOXIxoAOSDQc8xk1H7QcKxz3A2ExKW0K5XV7YaSTq8ke8BtEbAbbGOHYZbSKiiNKkKxGgE1Dk0bFBVRF4Dwr7NZW0bjXIkl3aWZmJZifiTpyrHPbfbZcdbuldGtAAjqCcw+tbZexAXfT4j0AiZknSBWWe1G0b/AIWHhEZYiR1OVoJ1I2Px3UmEnyOmkomPXDbYbwaG0TxWBZTBGvWmzZkRl+PP51p4MkskSCoqXi8O1tobchT6SAQD5wR86m8PdLRkqM3IlQ0eYmYPmAagcQxBe4zkscxnxEk8hqTvtQqkFSti7zQ0yprma5JoWPQ7m2rT/ZLZFzFIwn7oF2I5aFVn4kfWstsCTrWx+xZyXvAIFQWxtuxJA8XXb6mlb8rYrW0jWmvHMOSwZkDU6QPe057CNadY6VSu3xxqWFbAki4Lhd4iSIgAZhEaCRzql8O9p+KtN3eMwpLdUlCTy0Mg68x8qlxbWh+Vdmt4m2jghlDA8iN6qfGOxeFvT4ApMmR1Pr8P8o6Ci/C+IXXw6XbyBHdSxQA5lEmAViZI25npSv8AEUgyYgSc2kDXrpyNLcos7yszV/ZfbFw5nOTlHLoKLYPszYww8CiebGZ+dWHGMNTBcGdA2wIgiOY05zq3yBcQvGCVDdIJI23idPjz89DVYuT6ZDK0luz2B+T/ANw/+NKhv2s/kb/MK9qnwpGf8TiMdRyNqnYfGxvUKegrzKaEZOPRulBS7C/2y2GBNvMsywnKCOY0/aiyYdlFxEtsLRGdQT72hALSQQIJ2EyBG1BOG23BEQZ/AQGBI2DKf1qwHCKp7265VzqqoTmnqTy9KtGMpbMmScYasXDMK2IZbZzWiDlzQVVc2+bKpk8zImid3u0dRmFuEyi7aC5iwBAOnu9CQJOviE1X34jbGTJ3neT42ZwZMzouXUf3iZp/DYFrV8FbmacpPc+PNm1y7go/LcEbUH9QUHuIXLYXujbttsA6ghR/hgliNRoSJkxJqMPGEVj4QdADKmIBjfKYgT4iBGg2qfct3L8G0iDKpDW2JDQuUfeZyQf0Hi90mBBw0g+HfY6gz666+kkdBUuh1TPbGKd7q2ggRB7uWCsk+E3CSTpGsS5g9YFs4cbCFjduB390qFOUAycq6ZWUNs4hoIDEiq0cOADmUmPNz8I1HwolgeELCu6BEaCGKfhP4iSoyr5tvPhDUW2xOKTGbOOS2WYrce0JLJ4DM6KGyjKo84nUxyoiOI3lsd3gFuKtw5nASMoIGUBjrMRuW0ghhTnEbOGAyquW6sSLbAgCJzFgQ9uNJmOemwqNhOHW3kkMwGk5HgdJKKFMk9JNC6C436lddMXhrjPdS9attHdkeLxBSQmXUEEgakGAKbHbi8yhLuS4qe6CoEbzqkMNT9Opmr5Z4JhoiUDbe7ZEeX3iTNUntD7Nbtvx4cm6gg5QJYaxAFssW9YFNyseMUNY1MFiLPeT3FzbIGZwD5l9SfDtv4vSa7a4cGkg+EFvFDagacxvP4d6Zu4O8r5XRwQYMiGWOUHn5VbMJxZbjorxdc+CXtBbinw5M7ZvEDLCCdMvwoUNJ0VrCYIGZaCTALD99/KatHDuHZNDBzAKFkxPUlueswBRDD8JVmbvWVSu41DnXZUJ1HMw5B5A7UcwfC7TG2UVVshlCA5WNzMPDKkeDMB+VD4tjXbWmTbUto94J2ZuvBsW0caQGzqFDaM6+Ios7Z4kxKzvR1eE4nDSWsZVXQXQA4AMAkW0zNM6AsxAEk/lIdu2V3heLe3lF21cW1cYM/jBZRs4EGB5H1rQuzvbvBYuAl3JcP8A9u54T8Ds3wNI4tbKxUXpvZD4dxhn1KnuyBkZoVrmwdkRoIQSpzGCZ0ERMxsSwZgA4BACsMpHmwOu3Q6GOpijmL4dbuCGHy68j60B43wHEGDh7+SAdSC8k82B1blrM76VNrZamkD+J8U+zpdOaSiG4UVFzOVUZWcjwich8RGmm0RWLYztddvXGOLDhsxzNZMAGICwdIHSfUGtdTg4s2bwym47ozXLp8ZumGWANxAmFyxB5yawO81xTkYE/ehijLA0geLQH8vnVsdehKe9MsrmxiD924MjbYj1G/0iuL3CYBiJ+dVgopOoKMbp8Q91V8o6aVNwnFb9rUMLtvMUUNqWjpGv61oU/RmSWF9xH8Tgp5etQb/DRRdOPWXkMptvzB2n+usVwpDDTaao1GS0JGc4fMV1sB0NR7uCYcp5aVc8NwVidvgK5u8OZegqPBPRpeZxVlRwmEM6kKPiT8AP4xW4eyxLVu03dklmy5wR4pGYa8o2IjaddZrPMNZzSCskeX1BohgePYizdW3g0W4wHjthdGjnmBzZt+cSfSuyYahSJQ8S55EbC+KmWBXZSA0oQCTOaQeWgETI86H4mzbJEpmIMLJzHqHJuayCNN9+dLs5jcRds58TbFtifcO8eeu/rHpRN0U6lBPlt6/0KxVRscuXRAFrcnUneSdd9Y2nUyY1pp7AA0Eemn1qdf8AI0OxmKCCT/v5Cl5NvQ/CKWyLetLzAMmdhvtPrGm9CsdgFaSCR8T8t9vpQbjfaxbNwo5uK4EgOnhcHbIU1+OgppuPnuBeuIV5lecctTzq0YTW0QyOElxaJX/DE8/r/OlQP/nfDfkuf18a9pvjS9yf4LH7FAtWtdAI6k0RwmEZtWaB+c/+POoTWgRAGp6bz09KN8J4S5A71jA2Wf1P8K0YoW+geIyqMbuv9/oPYBZ8Nhf71xv4ftVg4Zw5LfiPif8AMf4dKkcN4a7ISi+FfQfKu8J2hw6o9t7Oe4NJJ5eXT4VrtR62eLk+JmdLS997/v7E3EdlrL2u+7y2Ljfl57xPInfcfGq9ewd+wZtqGQ6F1GZgOcqd/OPlXPCTbcsi3W1MgHkPI86O8HwXdmDdYqeuoH8aKxctyFyeKlgfGL/R3v7P0/0D+JPNhWNoAnWQ57wzOQlQSRJLHKeSmDoQIvDuEsT987aSe6zkt5BoIjddJB1OqxFWPHG2oLOwGkZh+412HyoGmCsXVa8b72yD75zS2wCCJlonfYctNc+TDw3ejX4fxvx1VNP+P3H8Hfe3lc2LQKkC2LZtkwwMQN8p18R0BIiTR3FY25dhLC5SyjvTbzBldgJG0FjqNDm0MztQ9rvc2lzjurQK6ZVN27+aSRprHhEneBBkKwhxlmMNd+zgHu0thjNwmJRlHoJOvQkis73s3J1oc4T2atgLduhwmhQoQTI117tiVECYUFonbej3FMTctWwmHVVZiNS0rEzmYCczEab/AOJtad7N97Zt5bqLmT7vu7WrHNlzXHzESdpAJGq0QwNqyqPiDdDkAm5nIJUqJKtMREHSABr60k9jw8vRB7KJdfw3GYtqWb8OWQYPwJgGNhrIq1W2tlsgdWMZiBrAMgEwdASDqY6UDuDEYgbGxhYzeEgvcB1hI0AI5nTXnROxw3DFFC2ykAhSUK3EnVoYiQfMEjp0qeky0XJnlzs9hcsd2CAzMSwzQWJZvExmJO0xy20p48Gslg4tWxcX3WCAMvLTSRp8KiLi0tWTaU9/cCFu6Y2xcI8wsLMGddTO9ALPH713Ef8Ap7kvqGweJVkcZRBIdVMDnrOpOp5Gmw8ku0XBsCp99FbWQSon1Pn56VEbBWbckWFAUKM0ToplW01GU8/jNSbGMYWx3mU3YLMtsyF1IMncgQQTG4NLhXG7GILi26vkbISpkZgAWXUeIgMNpGu9C2NxiYj7SeFvZxM52u22DMpI/wCmGZmNsak5QWJBgDxb1VEunk3w/r96+l+L8Cs4hMrojgSRIBg9QdwfMVm3aT2WyxbDtE65W2J8jy9CD61WOSycoUV3s77R8bhIUXM9sfgu+Nf8J3X4Grq3trciBhUzQde8J1jTw5Rzj8VZRxTg2Iw5IuIy8pI0PxmD8/hUbBq+cHKum8gx8RFM0mLbXTPoHsk7X8Jbv3DmuXS9w9FbO/uqNxsOdQO0nZK3itcxRp3UTprI3G86nqB6U72BVxYV7jliRCgjKqKshVVRoF1J1mZ1qy3zHi1OvITqY1gctj8KztuMtGhJSiYfx/sBctMAgLKAzK42lQzZSPzQo10BLRVTfht5MrgGJzZ11ieUDY+R/SvpS6zMFD5V11BMyYJAU6RrBmOVDrvCLPuwUWZITMqHPv8A2ST1Go6iqLIT4Oz574Zh3vvbshAzNcJ6MZ3k8h/Ktg7Ley1UhrksxOok5R69ar3H8Pa4fxG1cSchZpnXLPIHoJ26VufZzGpesI6EEGum5aa6DDi20+yBheyFhRH6AfxmucV2Kwz7gz/hP8KsleCkK0jKu0vs3hGNlsvmvL4cvhVW7C8F+y4i6LqnPl8DgmI5jQbnzPLat+ZQRB2rNO3Qt4e+hWBm5VRSlJcTNkxxh5loI2nka7AD+tKkNd6bVAtX5UHqK5vYiN949NKzstHofv3evwoDxDEgk6hgdNRzOwmD+ld4nEkg5WEfKfXyoNjMQUs5sphdY2iN4jUinjGic3y0iLj7Vp2+9VVb8IaN/XSqbxDiGJw5KOuewScofUAdFPIeVP8AHuJYfFoCLptuv4SDqfjrVWbvnG7ug9SKaUr0NiwqG/Um/wDGbX/4tv60qh/af/0r8jSpKLC4LiIua1bsFjrEstwkHlFZ+rRtUvBYkBwWE/GtuLNriYPEeEWR8i2WMVdLMqXPAeU/qBT3DsPdFzxZCDzqLhcJakOv60UN9VEkwK2xVbPIzT/xivp0E7KhdgB8Kh8T4+loQPE/Qfxqu8S7RFvDb0HXn8KD4e/DhiA0GSG2PrQlmS0g4P8A5jl5sv7BDF8Re80ufQch6UX4BxFLY1TPdJyWvItuQd1PSNZ5iqxdxIDSeZmB/CjfZ9Qwm9amznHjjXnoNNeVRnkTVM9F4lGKrSLbhOEYizeW74b1sQqm63htOI8IIEMVJ20EnXWjdr7NZuNc7p7bN4GvBJm4fe91SUBIO0fAjUZbxIdVtWFtKttxnW6G8SqZldNSdROaekb0SxOPtNdVUuhWiO6gHKSCFZAxnMA2xJ2FZJSb7DFBezlZxkRmuZWcvZAzOoz5RGaAmbqSNdQtOWb4a4qoQt42jms3LZCgLy0PhiY0kEcqCWbilxbu2wqohQ3kDrdVuRZSRkU67StEsLdyILZTvktpmW8ApOmun52/DUno0R+nROwOFRO7uFTZdZVxaS33ROmbTxBeubwtoZiK541xu3ZlLj3LSXVYC8oL2wzHmTOTlodIMDmQBbjT3QXwj27yxlv2roy3G6gExm0Ma1O4DwYJJVb9q25ObCkq6+rdOuUNXVW5DWuogq3wLEYx1XECxcW2PBi8OwVzAlUXUCTzEECtB4VwtLNu3al2AAAzET4SdSVAmSRPLQaVzhbKqgyhAMohQgWDIOVQNpI2/WoPFeOLb0X35zBZnLP5zqNDrHlBFBy5Dpcdjfansrh7xXE3b9y1CBTkYDMCcxUaTrJGh51VEv4gC7YwVrD28Msm1dLgG0oEuziTmOhOo3O5qRd4s2fO5ztvDageUHYeQqNcxis7OEVC0ZsvlpMUyTrZOUldrQ5wrtk9sWLGEdsbdYZSGVgVMyzXSfMmIJ5eVaE3F7IuLbYhXYkKreEtAJJE9ADvWaYnCW3tOigW85BLWwFaQQQZHpXmEC4YpffvsdiixtBXc5ktQYyEzJjf40ZRT6DDI1pmlXuGW7haQpUiII3HOQdCKGf8l4YFctpFg6AL8dIgj4GgfB+I4s3RculbNhlZbFm8y94W0IJnnAOgIoxw7tlad7ia/dwrmJXMZ0DeUa+u9TqS6K+R9oOjC21EAD+Xp5fP1rxEjxcwN9CY6E8x6muRjUOoYEeRBj1rrvp2NTbKpIcgE5uZEHcacqYfCqFygCJmPrPrOtdNcjnTYxE7f1/XxpbY1JmMe1Xh5tXFAuMyEswDGSpOrQdyPWo/Yn2h3cD4feTmp2P8jU/2wXPv0E8j/Cs3vGtsJeRWY5RXOl6H0nw72uYF1BctbbmCCR8CKJn2lcNiftK+kGf0r5Sz+ded4etCofUoufv/AAfRfHvbNhEUiwGuNyMZR9dfpWWr2jvY/HI9w6TtyAGwFUYNVj7G2c9+PKefURtRUktREnC1ctmx2MQytlbaBGkes661xibp8o5+dVjEdrMPn7vMRcU5YYR5HU0Zw+LF3UQQPOfrUJLjthT5eVHPvN08hzFN8Vx6WkJeI/WnOIYtLSEk1nmIu3Mbd5i0D86jbyO30WjFQWiN9g+2XS4XJb6gb1Hx+DuYTVLsjpVnxmJTD24EbVVrNp8Q+d/d5CqIDZD/AOM3ug/y15Vh+xp0FKm0C0UkU8bOkzXlKqwSZ03Q7hcc9s6Gn8TjXue8fhSpVWE5VViTxxvlWxma4e6RoKVKum2lo6Ksl8PsqZdhMEadau2GusmUKfD3YJU6jxHL4em9KlVIJcTzvEtuYf4R2f8AuxilcBkuZQpTMDl3za6qemnrUXC8Ct4y1fxdzwXbd0qO6GRYChttSPnSpVDk6bLuKUqXR1iuNi1btMbWcEsAGc6AQNT+LrrRG7gTfsriEuNYuKcqi3osbwy/iHypUqSa4pNe5WLttMN8I4Sr5b1wIb4j7xbYX6a/rRdWCgsFGZTMjSSTJn+VKlUZMvBKgR2m4m1poWM7gS/lvCjYb+fwqqNiDqTr60qVXxJcbM+V+ejy6efWubTaxSpU7JjmOxXdoWAnKOtBuxztiMSMTcYnuixRBoAVFKlXS1BjQ+b9UatxnhNnGIvfID4dI0InUiaofbTiD4C7bsYYW0tG3DKUBDEmMx/tDrSpVk8K3KXF9GzxKSja7DnYvDnC2x4jcN/xuW67AD50CftvibWM7i4RdTOwX8JAEwJEzSpVpjFSm7MsZNY40XDAcSuNhreIkDvC3hiQACRE/Citi8WUE8xNKlUJxVlcc3bX0RjvtUJ+1AEyMsjynl9KomINKlWj/FCw+Z/qR5rylSqZoPRVy9niA3iegFKlXAkXDinZbD4hi7LDcyNJ9an2MOti3lQQAKVKs2WTboONaAeM+9MNt0pXFFpDlApUq5HMpF9zevQx0B2oxdORNBtSpVYRgX/iT15SpUaOo//Z" 
-           },
+        font-size: 60px;
+        font-weight: bold;
+        background: url("17060126360942.jpg") no-repeat center center/cover;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
 
-                {
-             //nombres de variable a llamar
-             "ataque": "botnet", 
-             "descripcion": "programa malicioso que se auto replica y se propaga a otros sistemas para dañar, alterar o robar información ",
-             "impacto": "lentitud del sistema y perdida de datos.",
-             "ejemplo": "Discos o memoerias usb con malware",
-             "imagen": "" 
-           },
-
-                {
-             //nombres de variable a llamar
-             "ataque": "DDOS", 
-             "descripcion": "red de dispositivos controlados por un atacante-",
-             "impacto": "ataques de credential stuffing.",
-             "ejemplo": "Mirai, Emotet",
-             "imagen": "https://th.bing.com/th/id/OIP.Vy9qe6FVHZTIpcssHqTcygHaEo?w=252&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-           
-                {
-             //nombres de variable a llamar
-             "ataque": "Packet Sniffer", 
-             "descripcion": "programa que monitoriza y analiza el tráfico de una red de computadoras",
-             "impacto": "captura datos como contraseñas y datos bancarios.",
-             "ejemplo": "scripts inyectados",
-             "imagen": "https://th.bing.com/th/id/OIP.lih3wuTqAignRRDE2y4kWwHaE8?w=251&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-           
-                {
-             //nombres de variable a llamar
-             "ataque": "IP spoofing", 
-             "descripcion": "tecnica que envia paquetes de datos con una direccion falsa",
-             "impacto": "robo de ip y datos sensibles.",
-             "ejemplo": "sms encubiertos",
-             "imagen": "https://th.bing.com/th/id/OIP.drDai-bzc59twoAESWuTrQHaDt?w=279&h=174&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-
-                {
-             //nombres de variable a llamar
-             "ataque": "DNS spoofing", 
-             "descripcion": "ataque cibernético en el que los delincuentes manipulan las direcciones IP almacenadas en los servidores DNS",
-             "impacto": "robo de ip e datos personales.",
-             "ejemplo": "redes de internet abiertas",
-             "imagen": "https://th.bing.com/th/id/OIP.y67CNZwBTlKp7OY2uEmfTwHaEO?w=289&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-           
-                {
-             //nombres de variable a llamar
-             "ataque": "rootkit", 
-             "descripcion": "software malicioso diseñado para permitir el acceso no autorizado a un sistema informático.",
-             "impacto": "espio y robo de informacion.",
-             "ejemplo": "sistemas falsos de antivirus o antideteccion",
-             "imagen": "https://th.bing.com/th/id/OIP.O6LJVU8lYCsTFCNhKCUmFwHaE8?w=232&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-
-                {
-             //nombres de variable a llamar
-             "ataque": "MITM", 
-             "descripcion": "Es cuando un hacker se interpone netre la comunicacion de 2 sistemas",
-             "impacto": "el atacante puede ver tus datos",
-             "ejemplo": "ataque por comexion de router de internet",
-             "imagen": "https://th.bing.com/th/id/OIP.ekx1FKEYvwzreZQOcV1BMgHaES?w=280&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-           
-                {
-             //nombres de variable a llamar
-             "ataque": "Phishing", 
-             "descripcion": "es un tipo de ciberataque que engaña a las personas para que compartan sus datos",
-             "impacto": "robo y perdida de datos.",
-             "ejemplo": "correos electronicos o mensajes sms",
-             "imagen": "https://th.bing.com/th/id/OIP.UYLoTkpfkTKERZRBlx3PoAHaE8?w=276&h=184&c=7&r=0&o=7&pid=1.7&rm=3" 
-           },
-
-                {
-             //nombres de variable a llamar
-             "ataque": "Compromised key attack", 
-             "descripcion": "ciber ataque donde de usan llaves comprometidas de acceso",
-             "impacto": "robo de conraseñas.",
-             "ejemplo": "paginas falsas que te pidan tus contraseñas",
-             "imagen": "https://th.bing.com/th/id/OIP.MufjgBimewyN_HDg2CiSwgHaDn?w=306&h=170&c=7&r=0&o=5&pid=1.7" 
-           }
-           
-           
-           
-        ];
-      const cuerpoTabla = document.querySelector ("#tablaCiberseguridad tbody");
-       ataques.forEach(ataque=>{//con esta linea, el foreach recorre todo el script
-      
-      const fila = document.createElement ("tr");
-      fila.innerHTML = 
-      '<td>${ataque.ataque}</td> 
-      <td>${ataque.descripcion}</td>
-      <td>${ataque.impacto}</td>
-      <td>${ataque.ejemplo}</td> 
-      <td><img src="${ataque.imagen}" alt="${ataque.ataque}"></td>';
-      
-      cuerpoTabla.appendChild(fila);
-      })
-    </script>
-</body>
-</html
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="navbar-brand" href="index.html">Inicio</a>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 1 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/Ciberseguridad/Tabla de Malware.html"
+                  >Conceptos de Malware</a
+                >
+              </li>
+              <li>
+                <a href="/Ciberseguridad/Tabla de Malware01.html">Practica 2</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 2 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+                <a href="/tomas03.php">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 3 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+                <a href="/tomas03.php">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div
+      class="jumbotron jumbotron-ash-gray"
+      style="background-color: var(--ash-gray); color: var(--pomp-and-power)"
+    >
+      <div class="sung-text">
+        <h1>Miguel Alejandro Chavez Gonzaga</h1>
+        <h3>Programación 5toA</h3>
+        <p>Construye Paginas Web</p>
+      </div>
+    </div>
+  </body>
+</html>
