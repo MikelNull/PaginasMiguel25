@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- URLs corregidas sin espacios -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link
       rel="stylesheet"
@@ -24,10 +25,6 @@
       href="https://fonts.cdnfonts.com/css/cocaine-nosejob"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.cdnfonts.com/css/cocaine-nosejob"
-      rel="stylesheet"
-    />
 
     <title>Miguel Alejandro</title>
   </head>
@@ -40,11 +37,17 @@
         --ash-gray: #b3bfb8ff;
         --chili-red: #d64933ff;
         --red: #ff101fff;
+        --baby-power: #f0e6f6;
       }
+
       body {
         background-color: var(--baby-power);
         font-family: "DiaClone", sans-serif;
+        margin: 0;
+        padding: 0;
       }
+
+      /* Navbar */
       .navbar-brand {
         color: var(--feldgrau);
         font-family: "Schnoerkel Caps", sans-serif;
@@ -54,18 +57,17 @@
         letter-spacing: 0.1em;
         text-decoration: none;
         padding: 0.5em;
-        background-color: var(--feldgrau);
+        background-color: var(--ash-gray);
         color: white !important;
       }
+
       .navbar-brand:hover {
         color: white !important;
         text-decoration: none;
       }
+
       .nav-link-white {
         color: rgb(36, 34, 34) !important;
-      }
-      .jumbotron-ash-gray {
-        background-color: var(--ash-gray) !important;
       }
 
       .navbar {
@@ -75,16 +77,24 @@
 
       .navbar-nav > li > a {
         color: rgb(0, 0, 0) !important;
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
+
+      /* Jumbotron con efecto de texto recortado sobre fondo saturado */
       .sung-section {
         position: relative;
-        height: 500px;
+        height: 600px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         background: url("17060126360942.jpg") no-repeat center center/cover;
+        filter: saturate(1.5); /* ¡Más saturación! */
       }
+
       .sung-section::after {
         content: "";
         position: absolute;
@@ -92,28 +102,72 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.5); /* Oscurecer la imagen */
         z-index: 1;
       }
+
       .sung-text {
         position: relative;
         z-index: 2;
+        text-align: center;
+        max-width: 90%; /* Para móviles */
+        padding: 20px;
       }
-      .sung-text h1,
-      .sung-text h2,
-      .sung-text p {
-        font-family: "Cocaine Nosejob", sans-serif;
 
-        font-size: 60px;
+      .sung-text h1 {
+        font-size: 4em;
+        font-family: "Cocaine Nosejob", sans-serif;
         font-weight: bold;
+        color: transparent;
         background: url("17060126360942.jpg") no-repeat center center/cover;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        /* Placeholder blanco */
+        padding: 10px 20px;
+        background-color: white; /* Caja blanca detrás del texto */
+        display: inline-block;
+        border-radius: 8px;
+      }
+
+      .sung-text h3 {
+        font-size: 2.5em;
+        font-family: "Schnoerkel Caps", sans-serif;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 20px;
+      }
+
+      .sung-text p {
+        font-size: 2em;
+        font-family: "DiaClone", sans-serif;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        margin-top: 20px;
+      }
+
+      /* Responsive para móviles */
+      @media (max-width: 768px) {
+        .sung-section {
+          height: 450px;
+        }
+        .sung-text h1 {
+          font-size: 2.5em;
+          padding: 8px 15px;
+        }
+        .sung-text h3 {
+          font-size: 1.8em;
+        }
+        .sung-text p {
+          font-size: 1.5em;
+        }
       }
     </style>
 
-   
+    <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
@@ -130,15 +184,13 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="./Miguel01.html">Tabla de Malware</a>
+                <a href="Miguel01.html">Tabla de Malware</a>
               </li>
               <li>
-                <a href="./Miguel02.html">Tabla de Malware con images</a>
+                <a href="Miguel02.html">Tabla de Malware con images</a>
               </li>
               <li>
-                <a href="/Ciberseguridad/Tabla de Malware.html"
-                  >Conceptos de Malware</a
-                >
+                <a href="Miguel03.html">Proteccion contra Malware</a>
               </li>
             </ul>
           </li>
@@ -185,18 +237,14 @@
         </ul>
       </div>
     </nav>
-    <div
-      class="jumbotron jumbotron-ash-gray"
-      style="background-color: var(--ash-gray); color: var(--pomp-and-power)"
-    >
+
+    <!-- Jumbotron con texto recortado sobre la imagen -->
+    <div class="sung-section">
       <div class="sung-text">
-        <h1>Miguel Alejandro Chavez Gonzaga</h1>
+        <h1>MIGUEL ALEJANDRO CHAVEZ GONZAGA</h1>
         <h3>Programación 5toA</h3>
-        <p>Construye Paginas Web</p>
+        <p>CONSTRUYE PÁGINAS WEB</p>
       </div>
     </div>
   </body>
 </html>
-
-
-
