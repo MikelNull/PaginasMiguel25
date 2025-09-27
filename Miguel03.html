@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protecciones contra Malware</title>
+
+    <!-- Bootstrap y fuentes -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link
+      href="https://fonts.cdnfonts.com/css/schnoerkel-caps"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/nightmare-story"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/development-hell"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/minecrafter-alt" rel="stylesheet">
+               <link href="https://fonts.cdnfonts.com/css/typeface-mario-world-pixel-filled" rel="stylesheet">
+                
+  </head>
+
+  <body>
+    <style>
+      :root {
+        --pomp-and-power: #8d6b94ff;
+        --feldgrau: #3c493fff;
+        --ash-gray: #b3bfb8ff;
+        --chili-red: #d64933ff;
+        --red: #ff101fff;
+        --baby-power: #f0e6f6;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: var(--baby-power);
+        color: var(--feldgrau);
+        margin: 0;
+        padding: 0;
+        background: var(--ash-gray);
+      }
+
+      .navbar-brand {
+        color: var(--feldgrau) !important;
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        padding: 0.5em;
+        background-color: var(--baby-power);
+        color: white !important;
+      }
+      .navbar-brand:hover {
+        color: white !important;
+        text-decoration: none;
+      }
+      .nav-link-white {
+        color: rgb(36, 34, 34) !important;
+      }
+      .navbar {
+        background-color: var(--pomp-and-power) !important;
+        border: none;
+      }
+      .navbar-nav > li > a {
+        color: rgb(0, 0, 0) !important;
+      }
+
+      /* Títulos más grandes */
+      .titulo-seccion {
+        text-align: center;
+        margin-top: 20px;
+        color: var(--feldgrau);
+        font-family: "Schnoerkel Caps", sans-serif;
+      }
+      h1.titulo-seccion {
+        font-family: "Nightmare Story", sans-serif;
+        font-size: 3.2em;
+        margin-bottom: 10px;
+      }
+      h2.titulo-seccion {
+        font-family: "Development Hell", sans-serif;
+        font-size: 2.6em;
+        margin-top: 5px;
+      }
+
+      /* Tabla base */
+      .tabla-ciber {
+        width: 95%;
+        max-width: 1200px;
+        margin: 30px auto;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 4px 10px rgba(116, 100, 100, 0.1);
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .tabla-ciber thead {
+        background-color: var(--feldgrau);
+        color: white;
+      }
+
+      .tabla-ciber th,
+      .tabla-ciber td {
+        padding: 16px 12px;
+        text-align: center;
+        border: 1px solid var(--feldgrau);
+        font-size: 16px;
+        word-wrap: break-word;
+      }
+
+      .tabla-ciber th {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tabla-ciber tr:nth-child(even) {
+        background-color: var(--chili-red);
+        color: var(--feldgrau);
+      }
+
+      .tabla-ciber tr:nth-child(odd) {
+        background-color: white;
+        color: var(--feldgrau);
+      }
+
+      /* Hover con colores diferentes */
+      .tabla-ciber tr:nth-child(even):hover {
+        background-color: var(--chili-red);
+        color: white;
+      }
+      .tabla-ciber tr:nth-child(odd):hover {
+        background-color: var(--pomp-and-power);
+        color: white;
+      }
+
+      .tabla-ciber tr:hover {
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+      }
+
+      /* Imágenes más grandes */
+      .tabla-ciber img {
+        width: 100px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive para móviles */
+      @media (max-width: 768px) {
+        h1.titulo-seccion {
+          font-size: 2.4em;
+        }
+        h2.titulo-seccion {
+          font-size: 2em;
+        }
+
+        .tabla-ciber,
+        .tabla-ciber thead,
+        .tabla-ciber tbody,
+        .tabla-ciber th,
+        .tabla-ciber td,
+        .tabla-ciber tr {
+          display: block;
+        }
+
+        .tabla-ciber thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+
+        .tabla-ciber tr {
+          border: 1px solid var(--ash-gray);
+          margin-bottom: 15px;
+          padding: 15px;
+          border-radius: 10px;
+          background-color: white;
+        }
+
+        .tabla-ciber td {
+          border: none;
+          position: relative;
+          padding-left: 50% !important;
+          text-align: right;
+          font-size: 15px;
+        }
+
+        .tabla-ciber td:before {
+          content: attr(data-label) ": ";
+          position: absolute;
+          left: 10px;
+          width: 45%;
+          font-weight: bold;
+          text-align: left;
+          color: var(--feldgrau);
+        }
+
+        .tabla-ciber img {
+          width: 80px;
+          margin-top: 8px;
+        }
+      }
+    </style>
+
+     <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="index.html">Inicio</a></li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 1 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="Miguel01.html">Tabla de Malware</a>
+              </li>
+              <li>
+                <a href="Miguel02.html">Tabla de Malware con images</a>
+              </li>
+              <li>
+                <a href="Miguel03.html">Protecciones</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 2 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+                <a href="/tomas03.php">Practica 3</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a
+              class="nav-link dropdown-toggle nav-link-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              UNIDAD 3 Ciberseguridad <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/tomas01.php">Conceptos</a>
+              </li>
+              <li>
+                <a href="/tomas02.php">Practica 2</a>
+              </li>
+              <li>
+      </div>
+    </nav>
+
+    <!-- Títulos -->
+    <h1 class="titulo-seccion" style="font-family: 'Minecrafter Alt', sans-serif;font-family: 'Minecrafter', sans-serif;">Ciberseguridad</h1>
+    <h2 class="titulo-seccion" style="                                                                    font-family: 'Typeface Mario World Pixel Filled', sans-serif;
+                                                                    font-family: 'Typeface Mario World Pixel Outline', sans-serif " style="color: black;">Protecciones contra Malware</h2>
+
+    <!-- Tabla -->
+    <table class="tabla-ciber" id="tablaProteccion">
+      <thead>
+        <tr>
+          <th>Malware</th>
+          <th>Protección</th>
+          <th>Herramientas Recomendadas</th>
+          <th>Buenas Prácticas</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas generadas por JS -->
+      </tbody>
+    </table>
+
+    <script>
+      const protecciones = [
+        {
+          malware: "Phishing",
+          proteccion: "Educación del usuario y filtros de correo",
+          herramientas: "Antispam, navegadores con protección anti-phishing",
+          practicas: "No hacer clic en enlaces sospechosos, verificar URLs",
+          imagen: "https://cdn-icons-png.flaticon.com/512/2596/2596744.png",
+        },
+        {
+          malware: "Ransomware",
+          proteccion: "Copias de seguridad regulares y actualizaciones",
+          herramientas:
+            "Antivirus con protección anti-ransomware (Bitdefender, Kaspersky)",
+          practicas:
+            "No abrir archivos adjuntos desconocidos, mantener sistema actualizado",
+          imagen: "https://cdn-icons-png.flaticon.com/512/3066/3066540.png",
+        },
+        {
+          malware: "Virus",
+          proteccion: "Antivirus en tiempo real",
+          herramientas: "Windows Defender, Malwarebytes, Norton",
+          practicas: "Escanear dispositivos USB, no descargar software pirata",
+          imagen: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
+        },
+        {
+          malware: "Worm",
+          proteccion: "Firewall y parches de seguridad",
+          herramientas: "Firewall de Windows, pfSense, Snort",
+          practicas:
+            "Cerrar puertos innecesarios, actualizar sistemas operativos",
+          imagen: "https://cdn-icons-png.flaticon.com/512/2972/2972227.png",
+        },
+        {
+          malware: "Botnet",
+          proteccion: "Monitoreo de tráfico de red",
+          herramientas: "Wireshark, Cisco Umbrella, ESET",
+          practicas: "Reiniciar routers, cambiar contraseñas predeterminadas",
+          imagen: "https://cdn-icons-png.flaticon.com/512/3295/3295381.png",
+        },
+        {
+          malware: "DDoS",
+          proteccion: "Servicios de mitigación de DDoS",
+          herramientas: "Cloudflare, AWS Shield, Akamai",
+          practicas:
+            "Tener redundancia en servidores, plan de respuesta a incidentes",
+          imagen: "https://cdn-icons-png.flaticon.com/512/2972/2972227.png",
+        },
+        {
+          malware: "Packet Sniffer",
+          proteccion: "Cifrado de tráfico (HTTPS, VPN)",
+          herramientas: "OpenVPN, NordVPN, HTTPS Everywhere",
+          practicas:
+            "Evitar redes Wi-Fi públicas sin VPN, usar solo sitios HTTPS",
+          imagen: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
+        },
+        {
+          malware: "IP Spoofing",
+          proteccion: "Filtros de paquetes y autenticación fuerte",
+          herramientas: "Firewalls con inspección profunda, IPS",
+          practicas:
+            "Validar direcciones IP entrantes, usar protocolos seguros",
+          imagen: "https://cdn-icons-png.flaticon.com/512/3066/3066540.png",
+        },
+        {
+          malware: "DNS Spoofing",
+          proteccion: "DNSSEC y servidores DNS confiables",
+          herramientas: "Cloudflare DNS (1.1.1.1), Google DNS, DNSSEC",
+          practicas:
+            "Configurar DNS manualmente, evitar redes públicas inseguras",
+          imagen: "https://cdn-icons-png.flaticon.com/512/2596/2596744.png",
+        },
+        {
+          malware: "Rootkit",
+          proteccion: "Escaneo en arranque y firmas de kernel",
+          herramientas: "GMER, TDSSKiller, Windows Defender Offline",
+          practicas:
+            "Usar sistemas operativos actualizados, evitar privilegios de administrador",
+          imagen: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
+        },
+        {
+          malware: "MITM",
+          proteccion: "Cifrado extremo a extremo",
+          herramientas: "Signal, TLS 1.3, certificados SSL válidos",
+          practicas:
+            "Verificar certificados SSL, no usar HTTP en sitios sensibles",
+          imagen: "https://cdn-icons-png.flaticon.com/512/3295/3295381.png",
+        },
+        {
+          malware: "Keylogger",
+          proteccion: "Antimalware con detección de comportamiento",
+          herramientas: "Spybot Search & Destroy, Norton Power Eraser",
+          practicas: "Usar teclados virtuales, no dejar sesiones abiertas",
+          imagen: "https://cdn-icons-png.flaticon.com/512/2972/2972227.png",
+        },
+        {
+          malware: "Cryptojacker",
+          proteccion: "Monitoreo de uso de CPU/GPU",
+          herramientas: "NoCoin, MinerBlock, Task Manager",
+          practicas:
+            "Bloquear scripts de minería en el navegador, usar adblockers",
+          imagen: "https://cdn-icons-png.flaticon.com/512/3066/3066540.png",
+        },
+      ];
+
+      const cuerpoTabla = document.querySelector("#tablaProteccion tbody");
+      const headers = [
+        "Malware",
+        "Protección",
+        "Herramientas Recomendadas",
+        "Buenas Prácticas",
+        "Imagen",
+      ];
+
+      protecciones.forEach((item) => {
+        const fila = document.createElement("tr");
+        const celdas = [
+          item.malware,
+          item.proteccion,
+          item.herramientas,
+          item.practicas,
+          `<img src="${item.imagen}" alt="${item.malware}">`,
+        ];
+        celdas.forEach((contenido, index) => {
+          const td = document.createElement("td");
+          td.innerHTML = contenido;
+          td.setAttribute("data-label", headers[index]);
+          fila.appendChild(td);
+        });
+        cuerpoTabla.appendChild(fila);
+      });
+    </script>
+  </body>
+</html>
