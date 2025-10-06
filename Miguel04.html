@@ -3,30 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- URLs corregidas sin espacios -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
-    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <link
-      href="https://fonts.cdnfonts.com/css/schnoerkel-caps"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.cdnfonts.com/css/delffo" rel="stylesheet" />
-    <link href="https://fonts.cdnfonts.com/css/diaclone" rel="stylesheet" />
-    <link
-      href="https://fonts.cdnfonts.com/css/cocaine-nosejob"
-      rel="stylesheet"
-    />
-
-    <title>Miguel Alejandro</title>
+    <link href="https://fonts.cdnfonts.com/css/schnoerkel-caps" rel="stylesheet" />
+    <title>Miguel Alejandro - Calculadora</title>
   </head>
 
   <body>
@@ -36,7 +18,6 @@
         --feldgrau: #3c493fff;
         --ash-gray: #b3bfb8ff;
         --chili-red: #d64933ff;
-        --red: #ff101fff;
         --baby-power: #f0e6f6;
       }
 
@@ -46,298 +27,371 @@
         box-sizing: border-box;
       }
 
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
       body {
         font-family: Arial, Helvetica, sans-serif;
-        background-color: var(--baby-powder);
-        color: var(--baby-powder);
-        display: grid;
-        justify-content: center;
-        padding: 20px;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .calc {
-        width: 33%;
-        height: 85vh;
-        background-color: var(--cambridge-blue);
-        position: absolute;
-        border: 5px solid var(--cyclamen);
-        border-radius: 20px;
-      }
-
-      #ans {
-        width: 100%;
-        height: 10%;
-        align-content: center;
-        margin-top: 20px;
-        font-family: arial;
-        font-size: 30px;
-        color: var(--oxford-blue);
-        text-align: center;
-        border-radius: 15px;
-      }
-
-      .btn input[type="button"] {
-        width: 70px;
-        padding: 3px;
-        margin: 5px;
-        position: relative;
-        left: 23px;
-        top: 20px;
-        cursor: pointer;
-        font-size: 18px;
-        transition: all 0.5s ease;
         background-color: var(--baby-power);
-        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
       }
 
-      .btn input[type="button"]:hover {
-        background-color: #pink;
-        color: #white;
-      }
-
-      /* Navbar */
-      .navbar-brand {
-        color: var(--feldgrau);
-        font-family: "Schnoerkel Caps", sans-serif;
-        font-size: 2.5em;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        padding: 0.5em;
-        background-color: var(--ash-gray);
-        color: white !important;
-      }
-
-      .navbar-brand:hover {
-        color: white !important;
-        text-decoration: none;
-      }
-
-      .nav-link-white {
-        color: rgb(36, 34, 34) !important;
+      /* Navbar fijo */
+      .navbar-container {
+        width: 100%;
+        z-index: 1000;
       }
 
       .navbar {
         background-color: var(--pomp-and-power) !important;
         border: none;
+        margin-bottom: 0 !important;
+        border-radius: 0 !important;
+        min-height: 50px;
+      }
+
+      .navbar-header {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-brand {
+        color: white !important;
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 10px 15px;
+        background-color: var(--ash-gray);
+        margin: 8px 5px;
+        border-radius: 5px;
+        float: none;
+      }
+
+      .navbar-brand:hover {
+        color: white !important;
+        opacity: 0.9;
+      }
+
+      .navbar-toggle {
+        border-color: white;
+        margin-top: 12px;
+      }
+
+      .navbar-toggle .icon-bar {
+        background-color: white;
+      }
+
+      .navbar-collapse {
+        border: none;
+      }
+
+      .navbar-nav {
+        margin: 0;
       }
 
       .navbar-nav > li > a {
         color: rgb(0, 0, 0) !important;
         font-family: "Schnoerkel Caps", sans-serif;
-        font-size: 1.2em;
+        font-size: 1.1em;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.03em;
+        padding: 15px 12px;
       }
 
-      /* Jumbotron con efecto de texto recortado sobre fondo saturado */
-      .sung-section {
-        position: relative;
-        height: 600px;
+      .navbar-nav > li > a:hover {
+        background-color: rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .dropdown-menu {
+        background-color: white;
+      }
+
+      .dropdown-menu > li > a {
+        color: var(--feldgrau) !important;
+        font-family: Arial, sans-serif;
+        font-size: 0.95em;
+      }
+
+      .dropdown-menu > li > a:hover {
+        background-color: var(--ash-gray) !important;
+        color: var(--feldgrau) !important;
+      }
+
+      /* Contenedor principal */
+      .main-content {
+        flex: 1;
         display: flex;
-        align-items: center;
         justify-content: center;
-        text-align: center;
-        background: url("17060126360942.jpg") no-repeat center center/cover;
-        filter: saturate(1.5); /* ¡Más saturación! */
+        align-items: center;
+        padding: 2vh 2vw;
+        width: 100%;
+        min-height: 0;
       }
 
-      .sung-section::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
+      /* Contenedor de la calculadora */
+      .calc {
+        width: 90vw;
+        max-width: min(500px, 90vw);
+        max-height: 85vh;
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        border: 4px solid var(--pomp-and-power);
+        border-radius: 20px;
+        padding: clamp(15px, 3vh, 30px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+      }
+
+      #ans {
+        width: 100%;
+        height: clamp(50px, 10vh, 80px);
+        padding: 2vh 2vw;
+        margin-bottom: 2vh;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: clamp(1.2em, 3vh, 2em);
+        color: var(--feldgrau);
+        text-align: right;
+        border: 2px solid var(--ash-gray);
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(5px, 1vh, 10px);
+        flex: 1;
+      }
+
+      .btn-grid input[type="button"] {
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Oscurecer la imagen */
-        z-index: 1;
-      }
-
-      .sung-text {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        max-width: 90%; /* Para móviles */
-        padding: 20px;
-      }
-
-      .sung-text h1 {
-        font-size: 4em;
-        font-family: "Cocaine Nosejob", sans-serif;
+        min-height: clamp(40px, 8vh, 70px);
+        font-size: clamp(0.9em, 2.5vh, 1.4em);
         font-weight: bold;
-        color: transparent;
-        background: url("17060126360942.jpg") no-repeat center center/cover;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-        /* Placeholder blanco */
-        padding: 10px 20px;
-        background-color: white; /* Caja blanca detrás del texto */
-        display: inline-block;
-        border-radius: 8px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        background-color: var(--baby-power);
+        color: var(--feldgrau);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
-      .sung-text h3 {
-        font-size: 2.5em;
-        font-family: "Schnoerkel Caps", sans-serif;
+      .btn-grid input[type="button"]:hover {
+        background-color: var(--pomp-and-power);
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        margin-bottom: 20px;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
 
-      .sung-text p {
-        font-size: 2em;
-        font-family: "DiaClone", sans-serif;
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        margin-top: 20px;
+      .btn-grid input[type="button"]:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
-      /* Responsive para móviles */
+      .btn-clear {
+        background-color: var(--chili-red) !important;
+        color: white !important;
+      }
+
+      .btn-clear:hover {
+        background-color: #b33a2a !important;
+      }
+
+      .btn-equals {
+        background-color: var(--pomp-and-power) !important;
+        color: white !important;
+      }
+
+      .btn-equals:hover {
+        background-color: #6d4b74 !important;
+      }
+
+      /* Tablets */
+      @media (max-width: 991px) {
+        .navbar-brand {
+          font-size: 1.6em;
+        }
+
+        .navbar-nav > li > a {
+          font-size: 1em;
+          padding: 12px 10px;
+        }
+
+        .calc {
+          max-width: min(450px, 85vw);
+        }
+      }
+
+      /* Móviles */
       @media (max-width: 768px) {
-        .sung-section {
-          height: 450px;
+        .navbar-brand {
+          font-size: 1.3em;
+          padding: 8px 12px;
+          margin: 6px 4px;
         }
-        .sung-text h1 {
-          font-size: 2.5em;
-          padding: 8px 15px;
+
+        .navbar-toggle {
+          margin-top: 10px;
+          margin-right: 10px;
         }
-        .sung-text h3 {
-          font-size: 1.8em;
+
+        .navbar-nav > li > a {
+          font-size: 0.95em;
+          padding: 10px 15px;
         }
-        .sung-text p {
-          font-size: 1.5em;
+
+        .navbar-collapse {
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .calc {
+          max-width: min(400px, 90vw);
+        }
+      }
+
+      /* Móviles pequeños */
+      @media (max-width: 480px) {
+        .navbar-brand {
+          font-size: 1.1em;
+          padding: 6px 10px;
+        }
+
+        .navbar-nav > li > a {
+          font-size: 0.85em;
+          padding: 8px 12px;
+        }
+
+        .calc {
+          max-width: 92vw;
+        }
+      }
+
+      /* Móviles muy pequeños */
+      @media (max-width: 360px) {
+        .navbar-brand {
+          font-size: 1em;
+        }
+
+        .calc {
+          max-width: 95vw;
         }
       }
     </style>
 
     <!-- Navbar -->
-    <div class="container">
+    <div class="navbar-container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li>
-              <a class="navbar-brand" href="index.html">Inicio</a>
-            </li>
-            <li class="dropdown">
-              <a
-                class="nav-link dropdown-toggle nav-link-white"
-                href="#"
-                data-toggle="dropdown"
-              >
-                UNIDAD 1 Ciberseguridad <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="Miguel01.html">Tabla de Malware</a>
-                </li>
-                <li>
-                  <a href="Miguel02.html">Tabla de Malware con images</a>
-                </li>
-                <li>
-                  <a href="Miguel03.html">Proteccion contra Malware</a>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a
-                class="nav-link dropdown-toggle nav-link-white"
-                href="#"
-                data-toggle="dropdown"
-              >
-                UNIDAD 2 Ciberseguridad <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="./Miguel04.html">Conceptos</a>
-                </li>
-                <li>
-                  <a href="/tomas02.php">Practica 2</a>
-                </li>
-                <li>
-                  <a href="/tomas03.php">Practica 3</a>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a
-                class="nav-link dropdown-toggle nav-link-white"
-                href="#"
-                data-toggle="dropdown"
-              >
-                UNIDAD 3 Ciberseguridad <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/tomas01.php">Conceptos</a>
-                </li>
-                <li>
-                  <a href="/tomas02.php">Practica 2</a>
-                </li>
-                <li>
-                  <a href="/tomas03.php">Practica 3</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Inicio</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                  UNIDAD 1 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="Miguel01.html">Tabla de Malware</a></li>
+                  <li><a href="Miguel02.html">Tabla de Malware con imágenes</a></li>
+                  <li><a href="Miguel03.html">Protección contra Malware</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                  UNIDAD 2 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="./Miguel04.html">Conceptos</a></li>
+                  <li><a href="/tomas02.php">Práctica 2</a></li>
+                  <li><a href="/tomas03.php">Práctica 3</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                  UNIDAD 3 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/tomas01.php">Conceptos</a></li>
+                  <li><a href="/tomas02.php">Práctica 2</a></li>
+                  <li><a href="/tomas03.php">Práctica 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>
-    <div
-      class="jumbotron"
-      style="background-color: var(--baby-power); color: var(--pomp-and-power)"
-    >
+
+    <!-- Calculadora centrada -->
+    <div class="main-content">
       <div class="calc">
-        <input type="text" id="ans" />
-        <div class="btn">
-          <input type="button" value="C" onclick="Clear()" />
+        <input type="text" id="ans" readonly />
+        <div class="btn-grid">
+          <input type="button" value="C" onclick="Clear()" class="btn-clear" />
           <input type="button" value="%" onclick="Solve('%')" />
-          <input type="button" value="←" onclick="Solve('←')" />
+          <input type="button" value="←" onclick="Back()" />
           <input type="button" value="/" onclick="Solve('/')" />
-          <br />
+          
           <input type="button" value="7" onclick="Solve('7')" />
           <input type="button" value="8" onclick="Solve('8')" />
           <input type="button" value="9" onclick="Solve('9')" />
-          <input type="button" value="x" onclick="Solve('*')" />
-          <br />
+          <input type="button" value="×" onclick="Solve('*')" />
+          
           <input type="button" value="4" onclick="Solve('4')" />
           <input type="button" value="5" onclick="Solve('5')" />
           <input type="button" value="6" onclick="Solve('6')" />
           <input type="button" value="-" onclick="Solve('-')" />
-          <br />
+          
           <input type="button" value="1" onclick="Solve('1')" />
           <input type="button" value="2" onclick="Solve('2')" />
           <input type="button" value="3" onclick="Solve('3')" />
           <input type="button" value="+" onclick="Solve('+')" />
-          <br />
+          
           <input type="button" value="00" onclick="Solve('00')" />
           <input type="button" value="0" onclick="Solve('0')" />
           <input type="button" value="." onclick="Solve('.')" />
-          <input type="button" value="=" onclick="Result()" />
-          <br />
+          <input type="button" value="=" onclick="Result()" class="btn-equals" />
         </div>
       </div>
     </div>
+
     <script type="text/javascript">
       const Solve = (val) => {
         const v = document.getElementById("ans");
         v.value += val;
       };
+
       const Result = () => {
         const v1 = document.getElementById("ans").value;
-        const v2 = eval(v1);
-        document.getElementById("ans").value = v2;
+        try {
+          const v2 = eval(v1);
+          document.getElementById("ans").value = v2;
+        } catch (error) {
+          document.getElementById("ans").value = "Error";
+        }
       };
+
       const Clear = () => {
-        const input = document.getElementById("ans");
-        input.value = "";
+        document.getElementById("ans").value = "";
       };
+
       const Back = () => {
         const back = document.getElementById("ans");
         back.value = back.value.slice(0, -1);
