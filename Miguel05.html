@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fuente DiaClone -->
+    <link href="https://fonts.cdnfonts.com/css/diaclone" rel="stylesheet" />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <title>Miguel Alejandro - Perfil Editable</title>
+
+    <style>
+      :root {
+        --primary: #8d6b94;
+        --secondary: #3c493f;
+        --light: #f0e6f6;
+        --accent: #d64933;
+        --white: #ffffff;
+        --gray: #e0e0e0;
+        --text-dark: #2d2d2d;
+        --gold: #ffd700;
+        --red-glow: #ff0000;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--text-dark);
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navbar inspirada en Solo Leveling (claro) */
+      .navbar {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 0.75rem 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar-brand {
+        font-family: "DiaClone", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--white) !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+      }
+
+      .navbar-brand:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+      }
+
+      .nav-link {
+        color: var(--white) !important;
+        font-weight: 500;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .dropdown-menu {
+        background: var(--white);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 0.5rem 0;
+      }
+
+      .dropdown-item {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        color: var(--text-dark);
+      }
+
+      .dropdown-item:hover {
+        background: var(--primary);
+        color: var(--white) !important;
+      }
+
+      /* Hero Section con efecto de texto recortado */
+      .hero-section {
+        height: 60vh;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: url("17060126360942.jpg") no-repeat center center;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 90%;
+        padding: 2rem;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-content h1 {
+        font-family: "DiaClone", sans-serif;
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-weight: 800;
+        color: transparent;
+        background: url("17060126360942.jpg") no-repeat center center/cover;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        padding: 0.5rem 1rem;
+        background-color: white;
+        display: inline-block;
+        border-radius: 12px;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-content h3 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: var(--white);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 1rem;
+      }
+
+      .hero-content p {
+        font-size: clamp(1rem, 4vw, 2rem);
+        font-weight: 400;
+        color: var(--white);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        margin-top: 1rem;
+      }
+
+      /* Tarjeta de perfil editable */
+      .profile-card {
+        background: var(--white);
+        border: 1px solid var(--gray);
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 90%;
+        width: 100%;
+        animation: slideIn 1s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .profile-img-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.05) rotate(5deg);
+        box-shadow: 0 0 20px var(--accent);
+      }
+
+      .profile-img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+      }
+
+      .profile-img-container:hover .profile-img-overlay {
+        opacity: 1;
+      }
+
+      .profile-img-overlay i {
+        color: var(--white);
+        font-size: 2rem;
+      }
+
+      .profile-name {
+        font-family: "DiaClone", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-shadow: 0 0 8px rgba(141, 107, 148, 0.3);
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .profile-name:hover {
+        background: rgba(141, 107, 148, 0.1);
+      }
+
+      .profile-role {
+        font-size: 1.2rem;
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .profile-role:hover {
+        background: rgba(60, 73, 63, 0.1);
+      }
+
+      /* Tabla editable */
+      .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-table th,
+      .info-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      .info-table th {
+        background: var(--primary);
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.9rem;
+        font-family: "DiaClone", sans-serif;
+      }
+
+      .info-table tr:nth-child(even) {
+        background: #fafafa;
+      }
+
+      .info-table tr:hover {
+        background: #f0f0f0;
+      }
+
+      .editable {
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+      }
+
+      .editable:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .editable:focus {
+        outline: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Sección de habilidades / nivelación */
+      .leveling-section {
+        background: var(--white);
+        border: 1px solid var(--gray);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 90%;
+        width: 100%;
+        animation: fadeIn 1s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .section-title {
+        font-family: "DiaClone", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--secondary);
+        text-align: center;
+        margin: 2rem 0 1rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      .skill-bar {
+        background: var(--gray);
+        height: 10px;
+        border-radius: 5px;
+        margin: 0.5rem 0;
+        overflow: hidden;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(to right, var(--accent), var(--gold));
+        border-radius: 5px;
+        transition: width 1s ease;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 6px;
+      }
+
+      .skill-name:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      /* Responsivo completo */
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+        .nav-link {
+          font-size: 0.85rem;
+          padding: 0.5rem 0.75rem;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .hero-content h3 {
+          font-size: 1.8rem;
+        }
+        .hero-content p {
+          font-size: 1.2rem;
+        }
+        .profile-card {
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+        .profile-img {
+          width: 150px;
+          height: 150px;
+        }
+        .profile-name {
+          font-size: 1.5rem;
+        }
+        .profile-role {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar-brand {
+          font-size: 1rem;
+        }
+        .nav-link {
+          font-size: 0.75rem;
+          padding: 0.4rem 0.6rem;
+        }
+        .hero-content h1 {
+          font-size: 2rem;
+          padding: 0.5rem 0.75rem;
+        }
+        .hero-content h3 {
+          font-size: 1.5rem;
+        }
+        .hero-content p {
+          font-size: 1rem;
+        }
+        .profile-card {
+          padding: 1rem;
+          margin: 0.5rem;
+        }
+        .profile-img {
+          width: 120px;
+          height: 120px;
+        }
+        .profile-name {
+          font-size: 1.2rem;
+        }
+        .profile-role {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Zoom adaptativo */
+      @media (min-zoom: 1.5) {
+        .hero-content h1 {
+          font-size: clamp(3rem, 8vw, 5rem);
+        }
+        .profile-img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      @media (min-zoom: 2) {
+        .hero-content h1 {
+          font-size: clamp(3.5rem, 8vw, 6rem);
+        }
+        .profile-img {
+          width: 220px;
+          height: 220px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                UNIDAD 1 Ciberseguridad
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Miguel01.html"
+                    >Tabla de Malware</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel02.html"
+                    >Tabla de Malware con imágenes</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel03.html"
+                    >Protección contra Malware</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                UNIDAD 2 Ciberseguridad
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./Miguel04.html"
+                    >Calculadora</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Miguel05.html">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas03.php">Práctica 3</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                UNIDAD 3 Ciberseguridad
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/tomas01.php">Conceptos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas02.php">Práctica 2</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas03.php">Práctica 3</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>MIGUEL ALEJANDRO CHAVEZ GONZAGA</h1>
+        <h3>Programación 5toA</h3>
+        <p>CONSTRUYE PÁGINAS WEB</p>
+      </div>
+    </section>
+
+    <!-- Profile Card -->
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-img-container">
+            <img
+              src="perfil.jpg"
+              alt="Gambit"
+              class="profile-img"
+              id="profileImage"
+            />
+            <div
+              class="profile-img-overlay"
+              onclick="document.getElementById('fileInput').click()"
+            >
+              <i class="fas fa-camera"></i>
+            </div>
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              style="display: none"
+              onchange="changeProfilePic(this)"
+            />
+          </div>
+          <h2 class="profile-name" contenteditable="true">Miguel Alejandro</h2>
+          <p class="profile-role" contenteditable="true">
+            Programador | Asesino de Bugs
+          </p>
+        </div>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th><i class="fas fa-user icon-cell"></i></th>
+              <th>Datos Personales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-venus-mars"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Género:</strong> Masculino
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-dna"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Raza:</strong> Mutante
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-cake-candles"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Nacimiento:</strong> Agosto 1990
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-map-marker-alt"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Calle:</strong> 4609 Golden Street
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-city"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Ciudad:</strong> Miami, Florida (FL), 33139
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-phone"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Teléfono:</strong> 305-672-2736
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-cell"><i class="fas fa-mobile-alt"></i></td>
+              <td class="editable" contenteditable="true">
+                <strong>Celular:</strong> 786-447-6507
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sección de Nivelación -->
+      <div class="leveling-section">
+        <h2 class="section-title">SISTEMA DE NIVELACIÓN</h2>
+        <div class="skill-name" contenteditable="true">
+          <span>Programación Web</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%"></div>
+        </div>
+        <div class="skill-name" contenteditable="true">
+          <span>Seguridad Informática</span>
+          <span>88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 88%"></div>
+        </div>
+        <div class="skill-name" contenteditable="true">
+          <span>Resolución de Problemas</span>
+          <span>100%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 100%"></div>
+        </div>
+        <div class="skill-name" contenteditable="true">
+          <span>Trabajo en Equipo</span>
+          <span>75%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 bg-light mt-4">
+      <p class="mb-0">
+        © 2025 Miguel Alejandro | Diseñado con ❤️ y código en la luz
+      </p>
+    </footer>
+
+    <script>
+      function changeProfilePic(input) {
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+  </body>
+</html>
