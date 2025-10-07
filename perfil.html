@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fuente DiaClone -->
+    <link href="https://fonts.cdnfonts.com/css/diaclone" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <title>5A Prog - Perfil Hunter</title>
+
+    <style>
+      :root {
+        --primary: #8d6b94;
+        --secondary: #3c493f;
+        --dark-bg: #1a1a2e;
+        --darker-bg: #0f0f1e;
+        --accent: #d64933;
+        --gold: #ffd700;
+        --silver: #c0c0c0;
+        --blue-glow: #00d4ff;
+        --purple-glow: #a855f7;
+        --text-light: #e0e0e0;
+        --text-white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--darker-bg) 0%,
+          var(--dark-bg) 100%
+        );
+        color: var(--text-light);
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Efecto de partículas de fondo */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(168, 85, 247, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 212, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 20%,
+            rgba(255, 215, 0, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Hero Section más grande */
+      .hero-section {
+        height: 80vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1920")
+            center/cover;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 3rem;
+        border-radius: 30px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          rgba(168, 85, 247, 0.2) 0%,
+          transparent 50%,
+          rgba(0, 212, 255, 0.2) 100%
+        );
+        pointer-events: none;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--purple-glow),
+          var(--blue-glow)
+        );
+        color: var(--text-white);
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 50px rgba(168, 85, 247, 0.9);
+        }
+      }
+
+      .hero-content h1 {
+        font-family: "DiaClone", sans-serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 900;
+        color: var(--text-white);
+        text-shadow: 0 0 40px rgba(168, 85, 247, 0.9),
+          0 0 80px rgba(0, 212, 255, 0.7);
+        margin-bottom: 1.5rem;
+        letter-spacing: 3px;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        color: var(--gold);
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero-description {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Tarjeta de perfil más grande */
+      .profile-card {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 26, 46, 0.95),
+          rgba(15, 15, 30, 0.95)
+        );
+        border: 3px solid rgba(168, 85, 247, 0.4);
+        border-radius: 30px;
+        padding: 4rem 3rem;
+        margin: 3rem 0;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+          0 0 50px rgba(168, 85, 247, 0.3);
+        animation: slideIn 1s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(168, 85, 247, 0.15),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .profile-img-container {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .profile-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--purple-glow);
+        box-shadow: 0 0 50px rgba(168, 85, 247, 0.7),
+          0 0 100px rgba(0, 212, 255, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.08) rotate(3deg);
+        box-shadow: 0 0 70px rgba(168, 85, 247, 0.9),
+          0 0 120px rgba(0, 212, 255, 0.7);
+      }
+
+      .profile-img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+      }
+
+      .profile-img-container:hover .profile-img-overlay {
+        opacity: 1;
+      }
+
+      .profile-img-overlay i {
+        color: var(--white);
+        font-size: 3rem;
+      }
+
+      .rank-badge {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, var(--gold), #ff8c00);
+        color: var(--darker-bg);
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 900;
+        font-size: 1.2rem;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .profile-name {
+        font-family: "DiaClone", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: var(--text-white);
+        text-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+        margin: 0;
+      }
+
+      .profile-role {
+        font-size: 1.8rem;
+        color: var(--blue-glow);
+        text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+        font-weight: 600;
+      }
+
+      /* Sistema de información más grande */
+      .info-section {
+        background: rgba(15, 15, 30, 0.7);
+        border: 2px solid rgba(168, 85, 247, 0.3);
+        border-radius: 20px;
+        padding: 3rem;
+        margin: 3rem 0;
+        backdrop-filter: blur(10px);
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 3px solid rgba(168, 85, 247, 0.4);
+      }
+
+      .section-header i {
+        font-size: 2rem;
+        color: var(--purple-glow);
+        text-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+      }
+
+      .section-title {
+        font-family: "DiaClone", sans-serif;
+        font-size: 2rem;
+        color: var(--text-white);
+        margin: 0;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(26, 26, 46, 0.5);
+        border-radius: 15px;
+        border-left: 4px solid var(--purple-glow);
+        transition: all 0.3s ease;
+      }
+
+      .info-item:hover {
+        background: rgba(26, 26, 46, 0.8);
+        border-left-color: var(--blue-glow);
+        transform: translateX(8px);
+        box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+      }
+
+      .info-item i {
+        font-size: 1.8rem;
+        color: var(--blue-glow);
+        min-width: 40px;
+      }
+
+      .info-label {
+        color: var(--silver);
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .info-value {
+        color: var(--text-white);
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+
+      /* Sistema de nivelación con botones más grande */
+      .leveling-section {
+        background: rgba(15, 15, 30, 0.9);
+        border: 3px solid rgba(168, 85, 247, 0.4);
+        border-radius: 30px;
+        padding: 3rem;
+        margin: 3rem 0;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      }
+
+      .leveling-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .leveling-header h2 {
+        font-family: "DiaClone", sans-serif;
+        font-size: 3rem;
+        color: var(--gold);
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        margin-bottom: 1rem;
+      }
+
+      .leveling-subtitle {
+        color: var(--text-light);
+        font-size: 1.3rem;
+      }
+
+      .stat-row {
+        background: rgba(26, 26, 46, 0.7);
+        border: 2px solid rgba(168, 85, 247, 0.3);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin: 2rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .stat-row:hover {
+        border-color: var(--purple-glow);
+        box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+      }
+
+      .stat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .stat-name {
+        font-family: "DiaClone", sans-serif;
+        font-size: 1.8rem;
+        color: var(--text-white);
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--gold);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      }
+
+      .percentage-selector {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 1.5rem 0;
+      }
+
+      .percentage-btn {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--text-white);
+        border: 2px solid rgba(168, 85, 247, 0.3);
+        padding: 1rem 1.8rem;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .percentage-btn:hover {
+        background: linear-gradient(
+          135deg,
+          var(--purple-glow),
+          var(--blue-glow)
+        );
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
+      }
+
+      .percentage-btn.active {
+        background: linear-gradient(135deg, var(--gold), #ff8c00);
+        color: var(--darker-bg);
+        border-color: var(--gold);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+        transform: scale(1.1);
+      }
+
+      .stat-bar {
+        width: 100%;
+        height: 40px;
+        background: rgba(15, 15, 30, 0.9);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid rgba(168, 85, 247, 0.4);
+        margin-top: 1.5rem;
+      }
+
+      .stat-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--purple-glow),
+          var(--blue-glow)
+        );
+        border-radius: 20px;
+        transition: width 1s ease-out;
+        box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 3rem;
+        background: rgba(15, 15, 30, 0.9);
+        color: var(--text-light);
+        margin-top: 4rem;
+        border-top: 3px solid rgba(168, 85, 247, 0.4);
+        font-size: 1.2rem;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .hero-section {
+          height: 60vh;
+          min-height: 500px;
+        }
+
+        .profile-card {
+          padding: 2.5rem 1.5rem;
+        }
+
+        .profile-img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .profile-name {
+          font-size: 2.5rem;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .percentage-selector {
+          gap: 0.8rem;
+        }
+
+        .percentage-btn {
+          padding: 0.8rem 1.2rem;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .profile-img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .profile-name {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .stat-name {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge">⚡ HUNTER CLASE S</div>
+          <h1>5A PROGRAMACIÓN</h1>
+          <p class="hero-subtitle">Sistema de Perfil de Hunter</p>
+          <p class="hero-description">
+            Desarrolladores de élite forjados en el código
+          </p>
+        </div>
+      </section>
+
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div
+            class="profile-img-container"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            <img
+              src="perfil.jpg"
+              alt="Hunter Profile"
+              class="profile-img"
+              id="profileImage"
+            />
+            <div class="profile-img-overlay">
+              <i class="fas fa-camera"></i>
+            </div>
+            <div class="rank-badge">RANGO S</div>
+          </div>
+          <input
+            type="file"
+            id="fileInput"
+            accept="image/*"
+            onchange="changeProfilePic(this)"
+          />
+          <h2 class="profile-name">Miguel Alejandro Chavez Gonzaga</h2>
+          <p class="profile-role">🎯 Programador | 🔥 Asesino de Bugs</p>
+        </div>
+
+        <!-- Información Básica -->
+        <div class="info-section">
+          <div class="section-header">
+            <i class="fas fa-user"></i>
+            <h3 class="section-title">INFORMACIÓN BÁSICA</h3>
+          </div>
+          <div class="info-grid">
+            <div class="info-item">
+              <i class="fas fa-venus-mars"></i>
+              <div>
+                <div class="info-label">Género</div>
+                <div class="info-value">Masculino</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-dna"></i>
+              <div>
+                <div class="info-label">Raza</div>
+                <div class="info-value">Humano</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-cake-candles"></i>
+              <div>
+                <div class="info-label">Nacimiento</div>
+                <div class="info-value">16 Julio 2008</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <div class="info-label">Correo</div>
+                <div class="info-value">alexandro.games888♠4gmail.com</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-ruler-vertical"></i>
+              <div>
+                <div class="info-label">Altura</div>
+                <div class="info-value">1.80 mts</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-weight"></i>
+              <div>
+                <div class="info-label">Peso</div>
+                <div class="info-value">80 kg</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-palette"></i>
+              <div>
+                <div class="info-label">Color de Pelo</div>
+                <div class="info-value">Negro</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-tint"></i>
+              <div>
+                <div class="info-label">Tipo de Sangre</div>
+                <div class="info-value">O+</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-star"></i>
+              <div>
+                <div class="info-label">Signo Zodiacal</div>
+                <div class="info-value">Ni idea</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-heart"></i>
+              <div>
+                <div class="info-label">Estado Civil</div>
+                <div class="info-value">Soltero</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <div class="info-label">Educación</div>
+                <div class="info-value">Media Superior</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-notes-medical"></i>
+              <div>
+                <div class="info-label">Historial de Enfermedades</div>
+                <div class="info-value">Ninguna</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información de Ubicación -->
+        <div class="info-section">
+          <div class="section-header">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3 class="section-title">UBICACIÓN</h3>
+          </div>
+          <div class="info-grid">
+            <div class="info-item">
+              <i class="fas fa-road"></i>
+              <div>
+                <div class="info-label">Calle</div>
+                <div class="info-value">457 Primavera / Lirio</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-city"></i>
+              <div>
+                <div class="info-label">Ciudad</div>
+                <div class="info-value">Reynosa, Tamaulipas, México 88715</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <div class="info-label">Teléfono</div>
+                <div class="info-value">8999-11-5009 / 936593729</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-mobile-alt"></i>
+              <div>
+                <div class="info-label">Celular</div>
+                <div class="info-value">8913637453</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información de Empleo -->
+        <div class="info-section">
+          <div class="section-header">
+            <i class="fas fa-briefcase"></i>
+            <h3 class="section-title">INFORMACIÓN DE EMPLEO</h3>
+          </div>
+          <div class="info-grid">
+            <div class="info-item">
+              <i class="fas fa-building"></i>
+              <div>
+                <div class="info-label">Empresa</div>
+                <div class="info-value">Industria Manufacturera</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-laptop-code"></i>
+              <div>
+                <div class="info-label">Ocupación</div>
+                <div class="info-value">Computadora Códigos</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-tasks"></i>
+              <div>
+                <div class="info-label">Estado de Empleo</div>
+                <div class="info-value">Muchas Cosas</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-industry"></i>
+              <div>
+                <div class="info-label">Industria</div>
+                <div class="info-value">Tecnología</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sistema de Nivelación -->
+      <div class="leveling-section">
+        <div class="leveling-header">
+          <h2>⚔️ SISTEMA DE ESTADÍSTICAS ⚔️</h2>
+          <p class="leveling-subtitle">Habilidades del Hunter</p>
+        </div>
+
+        <!-- Programación Web -->
+        <div class="stat-row">
+          <div class="stat-header">
+            <span class="stat-name">💻 Programación Web</span>
+            <span class="stat-value" id="progWebValue">95%</span>
+          </div>
+          <div class="percentage-selector">
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 50, this)"
+            >
+              50%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 60, this)"
+            >
+              60%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 70, this)"
+            >
+              70%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 80, this)"
+            >
+              80%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 90, this)"
+            >
+              90%
+            </button>
+            <button
+              class="percentage-btn active"
+              onclick="setPercentage('progWeb', 95, this)"
+            >
+              95%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('progWeb', 100, this)"
+            >
+              100%
+            </button>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-fill" id="progWebBar" style="width: 95%"></div>
+          </div>
+        </div>
+
+        <!-- Seguridad Informática -->
+        <div class="stat-row">
+          <div class="stat-header">
+            <span class="stat-name">🛡️ Seguridad Informática</span>
+            <span class="stat-value" id="secInfoValue">88%</span>
+          </div>
+          <div class="percentage-selector">
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('secInfo', 50, this)"
+            >
+              50%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('secInfo', 60, this)"
+            >
+              60%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('secInfo', 70, this)"
+            >
+              70%
+            </button>
+            <button
+              class="percentage-btn"
+              onclick="setPercentage('secInfo', 80, this)"
+            >
+              80%
+            </button>
+            <button
+              class="percentage-btn active"
+              onclick="setPercentage('secInfo', 88, this)"
+            >
+              88%
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
