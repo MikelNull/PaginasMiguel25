@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/black-family" rel="stylesheet">
+
+    <title>Peliculas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            animation: gradientShift 10s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+            }
+        }
+        
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1{
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            font-family: 'ShadowedBlack', sans-serif;
+            color: white;
+            font-size: 3rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes titleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        form{
+            display: flex;
+            justify-content:center;
+            margin-bottom: 50px;
+            font-family: 'IncisedBlack', sans-serif;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        input[type="text"] {
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            width: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        input[type="submit"] {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            margin-left: 10px;
+            cursor: pointer;
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #333;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+        
+        input[type="submit"]:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        
+        .movie {
+            position: relative;
+            animation: fadeInUp 0.6s ease-out backwards;
+            transition: transform 0.3s ease;
+        }
+        
+        .movie:nth-child(1) { animation-delay: 0.1s; }
+        .movie:nth-child(2) { animation-delay: 0.2s; }
+        .movie:nth-child(3) { animation-delay: 0.3s; }
+        .movie:nth-child(4) { animation-delay: 0.4s; }
+        .movie:nth-child(5) { animation-delay: 0.5s; }
+        .movie:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .movie:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .movie img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .movie:hover img {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+        
+        .movie-info{
+            opacity: 0;
+            transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+        }
+        
+        .movie:hover .movie-info{
+            opacity: 1;
+        }
+        
+        .movie-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            animation: slideInFromTop 0.5s ease-out;
+        }
+        
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .movie-info span{
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: scaleIn 0.5s ease-out 0.2s backwards;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .green {
+            color: #2ecc71;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+        }
+        
+        .orange {
+            color: #f1c40f;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.8);
+        }
+        
+        .red {
+            color: #e74c3c;
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
+        }
+        
+        .overview {
+            margin-top: 20px;
+            padding: 10px;
+            max-height: 60%;
+            overflow-y: auto;
+            text-align: left;
+            width: 90%;
+            animation: fadeIn 0.5s ease-out 0.4s backwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .overview::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .overview::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .overview::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+        }
+        
+        .overview::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a mi Página de Películas</h1>
+        <form id="form">
+            <input type="text" id="search" placeholder="Busca una película">
+            <input type="submit" value="Buscar">
+        </form>
+        <section id="main" class="movies"></section>
+    </div>
+    <script>
+        const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
+        const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+        const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=';
+        const main = document.getElementById('main');
+        const form = document.getElementById('form');
+        const search = document.getElementById('search');
+
+        getMovies(API_URL);
+
+        async function getMovies(url) {
+            const res = await fetch(url);
+            const data = await res.json();
+            showMovies(data.results);
+        }
+
+        function showMovies(movies) {
+            main.innerHTML = '';
+            movies.forEach((movie) => {
+                const { title, poster_path, vote_average, overview } = movie;
+                const movieEL = document.createElement('div');
+                movieEL.classList.add('movie');
+                movieEL.innerHTML = `
+                    <img src="${IMG_PATH + poster_path}" alt="${title}">
+                    <div class="movie-info">
+                        <h3>${title}</h3>
+                        <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+                        <div class="overview">
+                            <h3>Overview</h3>
+                            ${overview}
+                        </div>
+                    </div>
+                `;
+                main.appendChild(movieEL);
+            });
+        }
+
+        function getClassByRate(vote) {
+            if (vote >= 8) {
+                return 'green';
+            } else if (vote >= 5) {
+                return 'orange';
+            } else {
+                return 'red';
+            }
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = search.value;
+            if (searchTerm && searchTerm !== '') {
+                getMovies(SEARCH_API + searchTerm);
+                search.value = '';
+            } else {
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+</html>
