@@ -34,6 +34,153 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+           .navbar-custom {
+        background-color: var(--social-icon-hover) !important;
+        font-family: "Schnoerkel Caps", sans-serif;
+      }
+      .navbar-brand-custom {
+        background-color: var(--ash-gray);
+        color: white !important;
+        font-family: "Schnoerkel Caps", sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.5em 1em;
+      }
+      .navbar-custom .nav-link {
+        color: rgba(0, 0, 0, 0.8) !important;
+        font-size: 1.2em;
+        text-transform: uppercase;
+      }
+      .navbar-custom .dropdown-menu {
+        background-color: var(--navbar-bg, var(--pomp-and-power));
+      }
+      .navbar-custom .dropdown-item {
+        color: white;
+      }
+      .navbar-custom .navbar-toggler {
+        border-color: rgba(0, 0, 0, 0.2);
+      }
+      .navbar-custom .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* --- 4. NUEVOS BOTONES ANIMADOS (Perfil y Redes Sociales) --- */
+      .profile-btn {
+        background: none;
+        border: 2px solid rgb(0, 0, 0);
+        color: rgb(135, 129, 129) !important;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s ease;
+      }
+      .profile-btn:hover {
+        background-color: rgb(144, 144, 144);
+        color: var(--pomp-and-power) !important;
+        transform: scale(1.05);
+      }
+      .social-icon {
+        font-size: 1.5rem;
+        color: rgba(177, 175, 175, 0.7);
+        transition: all 0.3s ease;
+      }
+      .social-icon:hover {
+        color: var(--social-icon-hover);
+        transform: scale(1.2) translateY(-2px);
+        text-shadow: 0 0 10px var(--social-icon-hover);
+      }
+      #youtube-icon:hover {
+        --social-icon-hover: #ff0000;
+      }
+      #tiktok-icon:hover {
+        --social-icon-hover: #00f2ea;
+      }
+      #instagram-icon:hover {
+        --social-icon-hover: #e1306c;
+      }
+
+      /* --- 5. VENTANA FLOTANTE (MODAL) PARA EL PERFIL --- */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 1050;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .modal-content-custom {
+        background-color: #fff;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 900px;
+        height: 85vh;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        animation: slideIn 0.4s ease-in-out;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateY(-30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .modal-header-custom {
+        padding: 15px;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-title-custom {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+      .modal-close-btn {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #888;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s, transform 0.2s;
+      }
+      .modal-close-btn:hover {
+        color: #000;
+        transform: rotate(90deg);
+      }
+      .modal-body-custom {
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+      .modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
         
         h1{
             text-align: center;
@@ -273,6 +420,144 @@
     </style>
 </head>
 <body>
+    <!-- BARRA DE NAVEGACIÓN MODERNA Y RESPONSIVA (BOOTSTRAP 5) -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand navbar-brand-custom" href="index.html">Inicio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <!-- Links de Unidades a la izquierda -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 1 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Miguel01.html"
+                    >Tabla de Malware</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel02.html"
+                    >Tabla de Malware con images</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel03.html"
+                    >Proteccion contra Malware</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 2 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./Miguel04.html"
+                    >Calculadora</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./perfil.html">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Peliculas.html"
+                    >Peliculas</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Miguel06.html"
+                    >Aplicacion APi</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 3 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/tomas01.php">Conceptos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas02.php">Practica 2</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas03.php">Practica 3</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- NUEVA SECCIÓN DE BOTONES (Perfil y Redes) a la derecha -->
+          <ul
+            class="navbar-nav ms-auto d-flex flex-row align-items-center gap-3"
+          >
+            <li class="nav-item">
+              <button class="btn profile-btn" onclick="openProfileModal()">
+                Perfil
+              </button>
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.youtube.com/@vegetta777"
+                class="social-icon"
+                id="youtube-icon"
+                target="_blank"
+                title="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.tiktok.com/@xfarganxyt?lang=es"
+                class="social-icon"
+                id="tiktok-icon"
+                target="_blank"
+                title="TikTok"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.instagram.com/willyrex/"
+                class="social-icon"
+                id="instagram-icon"
+                target="_blank"
+                title="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
         <h1>Bienvenido a mi Página de Películas</h1>
         <form id="form">
@@ -341,3 +626,4 @@
     </script>
 </body>
 </html>
+
