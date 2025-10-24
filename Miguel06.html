@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Librerías Esenciales -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+    <!-- Fuentes Personalizadas -->
+    <link
+      href="https://fonts.cdnfonts.com/css/schnoerkel-caps"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/gajraj-one" rel="stylesheet" />
+
+    <title>CryptoVerse - Simulador de Bolsa</title>
+
+    <style>
+      :root {
+        --dark-bg: #0d1117;
+        --card-bg: #161b22;
+        --border-color: #30363d;
+        --text-primary: #c9d1d9;
+        --text-secondary: #8b949e;
+        --accent-blue: #58a6ff;
+        --accent-green: #3fb950;
+        --accent-red: #f85149;
+        --navbar-bg: #8d6b94;
+        --navbar-brand-bg: #b3bfb8;
+        --navbar-link-color: white;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--dark-bg);
+        color: var(--text-primary);
+        padding-top: 70px; /* Espacio para la navbar fija */
+      }
+
+      /* --- BARRA DE NAVEGACIÓN - Réplica Exacta y Responsiva --- */
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        padding: 0;
+        font-family: "Schnoerkel Caps", sans-serif;
+      }
+      .navbar-custom .navbar-brand {
+        background-color: var(--navbar-brand-bg);
+        color: #212529 !important;
+        font-weight: bold;
+        font-size: 1.5rem;
+        padding: 15px 25px;
+        text-transform: uppercase;
+      }
+      .navbar-custom .nav-link {
+        color: var(--navbar-link-color) !important; /* COLOR DE TEXTO BLANCO */
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        padding: 20px 15px;
+        transition: background-color 0.2s;
+      }
+      .navbar-custom .nav-link:hover,
+      .navbar-custom .nav-link:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .navbar-custom .dropdown-menu {
+        background-color: var(--navbar-bg);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .navbar-custom .dropdown-item {
+        color: var(--navbar-link-color);
+        font-family: "Inter", sans-serif;
+        text-transform: none;
+        transition: background-color 0.2s;
+      }
+      .navbar-custom .dropdown-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* --- SECCIÓN HERO CON FONDO --- */
+      .hero {
+        position: relative;
+        text-align: center;
+        color: white;
+        padding: 120px 20px;
+        /* TU IMAGEN DE FONDO 'descargas.jpg' */
+        background-image: url("data:image/jpeg;base64,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"); /* <-- CAMBIA ESTA URL POR LA RUTA A TU IMAGEN 'descargas.jpg' */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(13, 17, 23, 0.7);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .hero h1 {
+        font-family: "Gajraj One", sans-serif;
+        font-size: 4.5rem;
+        font-weight: bold;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+      .hero p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 15px auto 0;
+        opacity: 0.9;
+      }
+
+      /* --- El resto de tus estilos (Contenido, Simulador, Equipo) se mantienen iguales, son excelentes --- */
+      .main-content {
+        padding: 40px 15px;
+      }
+      .content-section {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 40px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .content-section h2,
+      .content-section h3 {
+        font-family: "Gajraj One", sans-serif;
+        color: var(--accent-blue);
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+      }
+      .content-section p,
+      .content-section li {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+      }
+      .content-section strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+      .content-section ul {
+        padding-left: 20px;
+      }
+      .card.simulator-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+      }
+      .nav-tabs .nav-link {
+        color: var(--text-secondary);
+        border-color: transparent;
+      }
+      .nav-tabs .nav-link.active {
+        color: var(--text-primary);
+        background-color: var(--card-bg);
+        border-color: var(--border-color) var(--border-color) var(--card-bg);
+      }
+      .table {
+        color: var(--text-primary);
+      }
+      .table-hover > tbody > tr:hover > * {
+        color: var(--text-primary);
+        background-color: #222847;
+      }
+      .table-dark {
+        --bs-table-bg: #212529;
+      }
+      .form-control,
+      .form-select {
+        background-color: #0d1117;
+        border-color: var(--border-color);
+        color: var(--text-primary);
+      }
+      .form-control:focus,
+      .form-select:focus {
+        background-color: #0d1117;
+        border-color: var(--accent-blue);
+        color: var(--text-primary);
+        box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+      }
+      .text-success {
+        color: var(--accent-green) !important;
+      }
+      .text-danger {
+        color: var(--accent-red) !important;
+      }
+      .crypto-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+      }
+      .btn-primary {
+        background-color: var(--accent-blue);
+        border-color: var(--accent-blue);
+      }
+      .chart-container {
+        height: 350px;
+      }
+      .team-section {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: var(--dark-bg);
+        border-top: 1px solid var(--border-color);
+      }
+      .team-section h2 {
+        font-family: "Schnoerkel Caps", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+      .team-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .team-list li {
+        background-color: var(--card-bg);
+        padding: 15px 25px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+      .team-list li:hover {
+        color: var(--text-primary);
+        transform: translateY(-5px);
+        border-color: var(--accent-purple);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BARRA DE NAVEGACIÓN COMPLETA Y FUNCIONAL -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Inicio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 1 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Miguel01.html"
+                    >Tabla de Malware</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel02.html"
+                    >Tabla de Malware con images</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Miguel03.html"
+                    >Proteccion contra Malware</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 2 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./Miguel04.html"
+                    >Calculadora</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./perfil.html">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Peliculas.html">Peliculas</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Miguel06.html"
+                    >Aplicacion API</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                >UNIDAD 3 Ciberseguridad</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/tomas01.php">Conceptos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas02.php">Practica 2</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/tomas03.php">Practica 3</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN HERO -->
+    <div class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Bolsa de Criptomonedas</h1>
+        <p>Tu Puerta de Entrada al Universo de las Criptomonedas</p>
+      </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container main-content">
+      <!-- INTRODUCCIÓN -->
+      <div class="content-section">
+        <h2>Bienvenido al Simulador</h2>
+        <p>
+          Las criptomonedas son activos digitales descentralizados que operan
+          sobre una tecnología revolucionaria llamada
+          <strong>blockchain</strong>. A diferencia del dinero tradicional, no
+          están controladas por ningún banco o gobierno, lo que abre un nuevo
+          paradigma de finanzas y tecnología. Este simulador te permite comprar
+          y vender las criptomonedas más importantes del mercado con un saldo
+          ficticio de $10,000 USD, para que puedas aprender y experimentar sin
+          ningún riesgo.
+        </p>
+      </div>
+
+      <!-- SIMULADOR -->
+      <div class="card simulator-card">
+        <div class="card-body p-4">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                data-bs-toggle="tab"
+                data-bs-target="#mercado"
+                type="button"
+              >
+                Mercado
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#portafolio"
+                type="button"
+              >
+                Mi Portafolio
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#transacciones"
+                type="button"
+              >
+                Historial
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#herramientas"
+                type="button"
+              >
+                Herramientas
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#info-adicional"
+                type="button"
+              >
+                Aprende Más
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content pt-3" id="myTabContent">
+            <!-- Mercado -->
+            <div class="tab-pane fade show active" id="mercado" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Criptomoneda</th>
+                      <th>Precio (USD)</th>
+                      <th>Cambio 24h</th>
+                      <th>Capitalización</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mercado-body"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Portafolio -->
+            <div class="tab-pane fade" id="portafolio" role="tabpanel">
+              <div class="row mb-4 text-center">
+                <div class="col-md-4">
+                  <h4>Saldo: $<span id="current-balance">10000.00</span></h4>
+                </div>
+                <div class="col-md-4">
+                  <h4>
+                    Valor Portafolio: $<span id="portfolio-value">0.00</span>
+                  </h4>
+                </div>
+                <div class="col-md-4">
+                  <h4>Valor Total: $<span id="total-value">10000.00</span></h4>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="portfolioChart"></canvas>
+              </div>
+              <div class="table-responsive mt-4">
+                <table class="table table-hover align-middle">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Criptomoneda</th>
+                      <th>Cantidad</th>
+                      <th>Precio Actual</th>
+                      <th>Valor Actual</th>
+                    </tr>
+                  </thead>
+                  <tbody id="portfolio-body"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Transacciones -->
+            <div class="tab-pane fade" id="transacciones" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Tipo</th>
+                      <th>Criptomoneda</th>
+                      <th>Cantidad</th>
+                      <th>Precio Unitario</th>
+                      <th>Total Invertido</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transactions-body"></tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Herramientas (Conversor Mejorado) -->
+            <div class="tab-pane fade p-3" id="herramientas" role="tabpanel">
+              <h3>Conversor Cripto/Fiat</h3>
+              <div class="row align-items-center g-3">
+                <div class="col-md-5">
+                  <input
+                    type="number"
+                    id="monto-convertir"
+                    class="form-control"
+                    value="1"
+                  />
+                </div>
+                <div class="col-md-2 text-center fs-4">
+                  <i class="fas fa-arrow-right-arrow-left"></i>
+                </div>
+                <div class="col-md-5">
+                  <input
+                    type="text"
+                    id="resultado-conversion"
+                    class="form-control"
+                    readonly
+                  />
+                </div>
+                <div class="col-md-5">
+                  <select id="cripto-origen" class="form-select"></select>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                  <select id="fiat-destino" class="form-select">
+                    <option value="usd">Dólar (USD)</option>
+                    <option value="mxn">Peso (MXN)</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <button
+                    class="btn btn-primary w-100 mt-2"
+                    onclick="convertirCripto()"
+                  >
+                    Convertir
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Información Adicional -->
+            <div class="tab-pane fade" id="info-adicional" role="tabpanel">
+              <div class="content-section" style="margin-bottom: 0">
+                <h3>Cómo Empezar tu Viaje en Cripto</h3>
+                <p>
+                  <strong>1. Educación:</strong> Antes de invertir, entiende la
+                  tecnología. Investiga sobre Blockchain, Bitcoin y Ethereum.
+                  Comprende conceptos como "claves privadas", "wallets" y
+                  "exchanges".
+                </p>
+                <p>
+                  <strong>2. Elige un Exchange Confiable:</strong> Un "exchange"
+                  es una plataforma para comprar y vender criptomonedas (como
+                  Binance, Bitso o Coinbase). Investiga su reputación, seguridad
+                  y comisiones.
+                </p>
+                <p>
+                  <strong>3. Empieza con Poco:</strong> El mercado es volátil.
+                  Nunca inviertas más de lo que estás dispuesto a perder.
+                  Comienza con una cantidad pequeña para familiarizarte con el
+                  proceso.
+                </p>
+                <p>
+                  <strong>4. Sé Paciente (HODL):</strong> Una estrategia común
+                  es "HODL" (mantener). Consiste en comprar y mantener tus
+                  activos a largo plazo, sin entrar en pánico por las
+                  fluctuaciones diarias.
+                </p>
+                <hr style="border-color: var(--border-color); margin: 30px 0" />
+                <h3>Sobre la API de CoinGecko</h3>
+                <p>
+                  Este simulador obtiene todos sus datos de mercado en tiempo
+                  real, incluyendo precios y capitalización, de la
+                  <strong>API de CoinGecko</strong>. Es una de las API más
+                  completas y fiables del ecosistema, ofreciendo acceso gratuito
+                  a una vasta cantidad de información.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN DE EQUIPO -->
+    <div class="team-section">
+      <h2>Equipo de Desarrollo</h2>
+      <p class="text-secondary mb-4">5toA Programación Vespertino</p>
+      <ul class="team-list">
+        <li>Angel Arturo Áldas Martinez</li>
+        <li>Karime Jailyn Bernal Sánchez</li>
+        <li>Miguel Alejandro Chávez Gonzaga</li>
+        <li>Laura Edith Duran Mendoza</li>
+        <li>Allisson Guadalupe García Mendo</li>
+        <li>Christopher González Ruiz</li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // La lógica de JavaScript que ya tenías es funcional y la mantenemos.
+      // Solo la pegamos aquí adentro, limpia y ordenada.
+      const CRYPTO_API_URL =
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h";
+      const FIAT_RATES = { usd: { mxn: 17.05 }, mxn: { usd: 0.0586 } };
+      let marketData = [];
+      let portfolioChart;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeData();
+        refreshData();
+        setInterval(refreshData, 60000);
+      });
+
+      function initializeData() {
+        if (!localStorage.getItem("balance"))
+          localStorage.setItem("balance", 10000);
+        if (!localStorage.getItem("portfolio"))
+          localStorage.setItem("portfolio", JSON.stringify({}));
+        if (!localStorage.getItem("transactions"))
+          localStorage.setItem("transactions", JSON.stringify([]));
+        if (!localStorage.getItem("portfolioHistory"))
+          localStorage.setItem("portfolioHistory", JSON.stringify([]));
+      }
+
+      async function refreshData() {
+        await loadMarket();
+        await renderPortfolio();
+        renderTransactions();
+      }
+
+      async function loadMarket() {
+        const tableBody = document.getElementById("mercado-body");
+        const cryptoSelect = document.getElementById("cripto-origen");
+        tableBody.innerHTML = `<tr><td colspan="6" class="text-center">Actualizando precios... <i class="fas fa-spinner fa-spin"></i></td></tr>`;
+        try {
+          const response = await fetch(CRYPTO_API_URL);
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
+          marketData = await response.json();
+
+          tableBody.innerHTML = "";
+          cryptoSelect.innerHTML = "";
+
+          marketData.forEach((coin) => {
+            const changeClass =
+              coin.price_change_percentage_24h >= 0
+                ? "text-success"
+                : "text-danger";
+            const changeIcon =
+              coin.price_change_percentage_24h >= 0
+                ? "fa-arrow-up"
+                : "fa-arrow-down";
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                        <td>${coin.market_cap_rank}</td>
+                        <td><img src="${coin.image}" class="crypto-icon" alt="${
+              coin.name
+            }"> ${coin.name} (${coin.symbol.toUpperCase()})</td>
+                        <td>$${coin.current_price.toLocaleString("en-US", {
+                          maximumFractionDigits: 2,
+                          minimumFractionDigits: 2,
+                        })}</td>
+                        <td class="${changeClass}"><i class="fas ${changeIcon}"></i> ${Math.abs(
+              coin.price_change_percentage_24h || 0
+            ).toFixed(2)}%</td>
+                        <td>$${(coin.market_cap / 1e9).toFixed(2)}B</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="handleBuy('${
+                              coin.id
+                            }')">Comprar</button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="handleSell('${
+                              coin.id
+                            }')" disabled>Vender</button>
+                        </td>`;
+            tableBody.appendChild(row);
+
+            const option = document.createElement("option");
+            option.value = coin.id;
+            option.textContent = `${coin.name} (${coin.symbol.toUpperCase()})`;
+            cryptoSelect.appendChild(option);
+          });
+          updateSellButtons();
+        } catch (error) {
+          tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Error al cargar datos de la API.</td></tr>`;
+        }
+      }
+
+      function updateSellButtons() {
+        const portfolio = JSON.parse(localStorage.getItem("portfolio"));
+        document.querySelectorAll("#mercado-body tr").forEach((row) => {
+          const button = row.querySelector("button");
+          if (button) {
+            const coinId = button.onclick.toString().match(/'(.*?)'/)[1];
+            const sellButton = row.querySelector("button.btn-outline-danger");
+            if (portfolio[coinId] && portfolio[coinId].amount > 0) {
+              sellButton.disabled = false;
+            }
+          }
+        });
+      }
+
+      function handleBuy(coinId) {
+        const coin = marketData.find((c) => c.id === coinId);
+        if (!coin) return;
+        const amountStr = prompt(
+          `¿Cuántas unidades de ${
+            coin.name
+          } deseas comprar?\nPrecio actual: $${coin.current_price.toLocaleString()}\nTu saldo: $${parseFloat(
+            localStorage.getItem("balance")
+          ).toLocaleString()}`
+        );
+        if (!amountStr) return;
+        const amount = parseFloat(amountStr);
+        if (isNaN(amount) || amount <= 0) {
+          alert("Cantidad inválida.");
+          return;
+        }
+
+        let balance = parseFloat(localStorage.getItem("balance"));
+        let portfolio = JSON.parse(localStorage.getItem("portfolio"));
+        let transactions = JSON.parse(localStorage.getItem("transactions"));
+        let totalCost = amount * coin.current_price;
+
+        if (totalCost > balance) {
+          alert("Saldo insuficiente.");
+          return;
+        }
+
+        if (!portfolio[coinId]) {
+          portfolio[coinId] = {
+            name: coin.name,
+            symbol: coin.symbol,
+            image: coin.image,
+            amount: 0,
+          };
+        }
+        portfolio[coinId].amount += amount;
+        balance -= totalCost;
+
+        transactions.unshift({
+          date: new Date().toLocaleString(),
+          type: "Compra",
+          coin: coin.name,
+          amount,
+          price: coin.current_price,
+          total: totalCost,
+        });
+        localStorage.setItem("balance", balance);
+        localStorage.setItem("portfolio", JSON.stringify(portfolio));
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+        alert(`Compra exitosa: ${amount} ${coin.symbol.toUpperCase()}`);
+        refreshData();
+      }
+
+      function handleSell(coinId) {
+        const coin = marketData.find((c) => c.id === coinId);
+        if (!coin) return;
+
+        let portfolio = JSON.parse(localStorage.getItem("portfolio"));
+        if (!portfolio[coinId] || portfolio[coinId].amount <= 0) {
+          alert("No posees esta criptomoneda.");
+          return;
+        }
+
+        const maxAmount = portfolio[coinId].amount;
+        const amountStr = prompt(
+          `¿Cuántas unidades de ${
+            coin.name
+          } deseas vender? (Tienes: ${maxAmount.toFixed(6)})`
+        );
+        if (!amountStr) return;
+        const amount = parseFloat(amountStr);
+
+        if (isNaN(amount) || amount <= 0 || amount > maxAmount) {
+          alert("Cantidad inválida.");
+          return;
+        }
+
+        let balance = parseFloat(localStorage.getItem("balance"));
+        let transactions = JSON.parse(localStorage.getItem("transactions"));
+        let totalGain = amount * coin.current_price;
+
+        portfolio[coinId].amount -= amount;
+        if (portfolio[coinId].amount < 1e-9) {
+          delete portfolio[coinId];
+        }
+        balance += totalGain;
+
+        transactions.unshift({
+          date: new Date().toLocaleString(),
+          type: "Venta",
+          coin: coin.name,
+          amount,
+          price: coin.current_price,
+          total: totalGain,
+        });
+        localStorage.setItem("balance", balance);
+        localStorage.setItem("portfolio", JSON.stringify(portfolio));
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+        alert(`Venta exitosa: ${amount} ${coin.symbol.toUpperCase()}`);
+        refreshData();
+      }
+
+      async function renderPortfolio() {
+        const portfolio = JSON.parse(localStorage.getItem("portfolio"));
+        const tableBody = document.getElementById("portfolio-body");
+        tableBody.innerHTML = "";
+        let totalPortfolioValue = 0;
+
+        if (Object.keys(portfolio).length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="4" class="text-center">Tu portafolio está vacío.</td></tr>`;
+        } else {
+          for (const coinId in portfolio) {
+            const coinData = marketData.find((c) => c.id === coinId);
+            if (coinData) {
+              const coin = portfolio[coinId];
+              const currentValue = coin.amount * coinData.current_price;
+              totalPortfolioValue += currentValue;
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                            <td><img src="${coin.image}" class="crypto-icon"> ${
+                coin.name
+              } (${coin.symbol.toUpperCase()})</td>
+                            <td>${coin.amount.toFixed(6)}</td>
+                            <td>$${coinData.current_price.toLocaleString(
+                              "en-US"
+                            )}</td>
+                            <td>$${currentValue.toLocaleString("en-US", {
+                              minimumFractionDigits: 2,
+                            })}</td>`;
+              tableBody.appendChild(row);
+            }
+          }
+        }
+        const balance = parseFloat(localStorage.getItem("balance"));
+        document.getElementById("current-balance").textContent =
+          balance.toLocaleString("en-US", { minimumFractionDigits: 2 });
+        document.getElementById("portfolio-value").textContent =
+          totalPortfolioValue.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+          });
+        const totalValue = balance + totalPortfolioValue;
+        document.getElementById("total-value").textContent =
+          totalValue.toLocaleString("en-US", { minimumFractionDigits: 2 });
+        updatePortfolioChart(totalValue);
+      }
+
+      function renderTransactions() {
+        const transactions = JSON.parse(localStorage.getItem("transactions"));
+        const tableBody = document.getElementById("transactions-body");
+        tableBody.innerHTML = "";
+        if (transactions.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="6" class="text-center">No hay historial de transacciones.</td></tr>`;
+        } else {
+          transactions.forEach((tx) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                        <td>${tx.date}</td>
+                        <td class="${
+                          tx.type === "Compra" ? "text-danger" : "text-success"
+                        }">${tx.type}</td>
+                        <td>${tx.coin}</td>
+                        <td>${tx.amount.toFixed(6)}</td>
+                        <td>$${tx.price.toLocaleString("en-US")}</td>
+                        <td>$${tx.total.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                        })}</td>`;
+            tableBody.appendChild(row);
+          });
+        }
+      }
+
+      function updatePortfolioChart(currentTotalValue) {
+        const history = JSON.parse(localStorage.getItem("portfolioHistory"));
+        history.push({
+          time: new Date().toLocaleTimeString(),
+          value: currentTotalValue,
+        });
+        if (history.length > 20) history.shift();
+        localStorage.setItem("portfolioHistory", JSON.stringify(history));
+
+        const ctx = document.getElementById("portfolioChart").getContext("2d");
+        if (portfolioChart) {
+          portfolioChart.data.labels = history.map((item) => item.time);
+          portfolioChart.data.datasets[0].data = history.map(
+            (item) => item.value
+          );
+          portfolioChart.update("none");
+        } else {
+          portfolioChart = new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: history.map((item) => item.time),
+              datasets: [
+                {
+                  label: "Valor Total (USD)",
+                  data: history.map((item) => item.value),
+                  borderColor: "var(--accent-blue)",
+                  backgroundColor: "rgba(59, 130, 246, 0.2)",
+                  tension: 0.4,
+                  fill: true,
+                  pointRadius: 0,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                y: {
+                  ticks: { color: "var(--text-secondary)" },
+                  grid: { color: "var(--border-color)" },
+                },
+                x: {
+                  ticks: { color: "var(--text-secondary)" },
+                  grid: { color: "var(--border-color)" },
+                },
+              },
+            },
+          });
+        }
+      }
+
+      function convertirCripto() {
+        const amount =
+          parseFloat(document.getElementById("monto-convertir").value) || 0;
+        const cryptoId = document.getElementById("cripto-origen").value;
+        const fiatId = document.getElementById("fiat-destino").value;
+        const resultEl = document.getElementById("resultado-conversion");
+        const coin = marketData.find((c) => c.id === cryptoId);
+        if (!coin) {
+          resultEl.value = "Error";
+          return;
+        }
+        const priceInUsd = coin.current_price;
+        let finalValue =
+          fiatId === "usd"
+            ? amount * priceInUsd
+            : amount * priceInUsd * FIAT_RATES.usd.mxn;
+        resultEl.value = finalValue.toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: fiatId === "usd" ? 6 : 2,
+        });
+      }
+    </script>
+  </body>
+</html>
