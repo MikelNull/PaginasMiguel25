@@ -23,39 +23,238 @@
   </head>
   <body>
     <style>
-        :root{
-            --pomp-and-power: #8d6b94ff;
-            --feldgrau: #3c493fff;
-            --ash-gray: #b3bfb8ff;
-            --chili-red: #d64933ff;
-            --red: #ff101fff;
-        }
-        body{
-            background-color: var(--baby-power);
-        }
+      :root {
+        --admin: #6366f1;
+        --teacher: #10b981;
+        --student: #3b82f6;
+        --alert: #f59e0b;
+        --danger: #ef4444;
+        --bg: #f9fafb;
+        --text: #1f2937;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+      }
+      .hero {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 30px;
+        border-radius: 12px;
+      }
+      .badge-role {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 12px;
+        margin-right: 6px;
+      }
+      .section {
+        margin-top: 24px;
+      }
+      .step {
+        border-left: 4px solid #e5e7eb;
+        padding-left: 16px;
+        margin-bottom: 16px;
+      }
+      .code {
+        background: #111827;
+        color: #f9fafb;
+        padding: 12px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+      }
+      .callout {
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        padding: 14px;
+        border-radius: 10px;
+      }
+      .checklist li {
+        margin-bottom: 6px;
+      }
     </style>
 
-    <nav class="navbar navbar-light" style="background-color: var(--pomp-and-power);">
-     
-        <div class="container">
-            <a class="navbar-brand" href="index.html" style="background: var(--feldgrau);">Inicio</a>
-        </div>
-      </nav>
+    <nav class="navbar navbar-default" style="background-color: var(--admin);">
+      <div class="container">
+        <a class="navbar-brand" href="index.html" style="color: white;">Gestor Académico Inteligente</a>
+      </div>
+    </nav>
 
-    <div class="jumbotron"style="background-color: var(--ash-gray);">
-      <h1 class="display-4">Mi pagina web personal</h1>
-      <p class="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <hr class="my-4" />
-      <p>
-        It uses utility classes for typography and spacing to space content out
-        within the larger container.
-      </p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Continuar</a>
-      </p>
+    <div class="container">
+      <div class="hero">
+        <h1>Guía para principiantes: Tu primera app móvil</h1>
+        <p class="lead">
+          Bienvenido/a. No necesitas saber programar. Te guiaré paso a paso para
+          crear tu primera app móvil con Flutter y Firebase. Cada paso explica
+          el porqué, qué verás en pantalla y los errores comunes.
+        </p>
+        <p>
+          Frase clave del proyecto: <strong>"Una app educativa exitosa no es la más bonita – es la que protege a los alumnos mientras reduce el trabajo del maestro en un 70%."</strong>
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>1) ¿Qué vamos a construir?</h2>
+        <p>
+          Una app llamada <strong>Gestor Académico Inteligente</strong> con tres roles
+          y funciones clave como pase de lista con QR, evaluaciones con IA y
+          reportes automáticos. Todo pensado para docentes con poco tiempo.
+        </p>
+        <div>
+          <span class="badge-role" style="background: var(--admin);">ADMIN</span>
+          <span class="badge-role" style="background: var(--teacher);">MAESTRO</span>
+          <span class="badge-role" style="background: var(--student);">ESTUDIANTE</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>2) Instalación desde cero (sin experiencia)</h2>
+        <div class="step">
+          <h4>Paso 1. Instalar Flutter</h4>
+          <p>
+            Flutter es la herramienta para crear apps Android e iOS con un solo código.
+          </p>
+          <div class="code">1) Entra a https://flutter.dev/docs/get-started/install
+2) Descarga Flutter para tu sistema
+3) Extrae la carpeta en C:\\src\\flutter (Windows) o ~/development/flutter (Mac/Linux)</div>
+          <p><strong>Captura esperada:</strong> Verás una carpeta llamada <em>flutter</em> con subcarpetas como <em>bin</em>.</p>
+        </div>
+        <div class="step">
+          <h4>Paso 2. Instalar Android Studio</h4>
+          <p>
+            Android Studio incluye el emulador para probar tu app sin un teléfono real.
+          </p>
+          <div class="code">1) Entra a https://developer.android.com/studio
+2) Descarga e instala Android Studio
+3) Abre Android Studio y completa el asistente inicial</div>
+          <p><strong>Captura esperada:</strong> Verás la pantalla de bienvenida con el botón “New Project”.</p>
+        </div>
+        <div class="step">
+          <h4>Paso 3. Configurar el SDK de Android</h4>
+          <p>
+            El SDK son las herramientas para compilar apps Android.
+          </p>
+          <div class="code">1) En Android Studio, abre Settings
+2) Ve a “Android SDK” y marca Android 14 o 13
+3) Presiona “Apply”</div>
+          <p><strong>Errores comunes:</strong> “SDK not found”. Solución: instalar SDK desde Android Studio.</p>
+        </div>
+        <div class="step">
+          <h4>Paso 4. Verificar Flutter</h4>
+          <p>
+            Abre la terminal (cmd o PowerShell en Windows) y ejecuta:
+          </p>
+          <div class="code">flutter doctor</div>
+          <p>
+            <strong>Captura esperada:</strong> Verás checks verdes. Si aparece un error rojo, sigue la sugerencia que muestra Flutter.
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>3) Crear tu primer proyecto Flutter</h2>
+        <div class="step">
+          <h4>Paso 1. Crear el proyecto</h4>
+          <div class="code">flutter create gestor_academico
+cd gestor_academico</div>
+          <p><strong>Captura esperada:</strong> Carpeta con archivos como <em>lib</em> y <em>pubspec.yaml</em>.</p>
+        </div>
+        <div class="step">
+          <h4>Paso 2. Ejecutar por primera vez</h4>
+          <div class="code">flutter run</div>
+          <p>
+            <strong>Captura esperada:</strong> El emulador muestra una app con un contador.
+          </p>
+          <p><strong>Errores comunes:</strong> “No devices found”. Solución: abrir un emulador en Android Studio.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>4) Conectar Firebase (gratis)</h2>
+        <div class="step">
+          <h4>Paso 1. Crear proyecto en Firebase</h4>
+          <div class="code">1) Entra a https://console.firebase.google.com
+2) Crea un proyecto llamado gestor_academico
+3) Activa Authentication, Firestore y Storage</div>
+          <p><strong>Captura esperada:</strong> Panel con tarjetas de Auth, Firestore y Storage.</p>
+        </div>
+        <div class="step">
+          <h4>Paso 2. Conectar la app</h4>
+          <p>
+            En Firebase, registra tu app Android y descarga el archivo <em>google-services.json</em>.
+          </p>
+          <p><strong>Captura esperada:</strong> Archivo descargado en tu carpeta de descargas.</p>
+        </div>
+        <div class="callout">
+          <strong>Importante:</strong> Nunca subas claves privadas a repositorios públicos. Mantén tu app segura desde el día 1.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>5) Roles y pantallas principales</h2>
+        <p>Así se verá tu estructura funcional:</p>
+        <ul>
+          <li><strong>Admin:</strong> Control total, 2FA obligatorio, dashboard global.</li>
+          <li><strong>Maestro:</strong> Máximo 3 grupos, QR y código numérico para asistencia.</li>
+          <li><strong>Estudiante:</strong> Perfil académico, ver tareas y marcar asistencia.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>6) Funciones clave (explicadas fácil)</h2>
+        <div class="step">
+          <h4>Pase de lista ultrarrápido</h4>
+          <p>
+            El maestro genera un QR válido por 5 minutos. El alumno lo escanea y queda presente.
+          </p>
+          <p><strong>Objetivo de tiempo:</strong> 100 alumnos en menos de 60 segundos.</p>
+        </div>
+        <div class="step">
+          <h4>Evaluaciones con IA</h4>
+          <p>
+            La IA sugiere calificaciones según una rúbrica, pero el maestro decide la calificación final.
+          </p>
+          <p><strong>Beneficio:</strong> Reduce el tiempo de evaluación hasta 70%.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>7) Checklist para avanzar sin errores</h2>
+        <ul class="checklist">
+          <li>Instalé Flutter y Android Studio.</li>
+          <li>Ejecuté <strong>flutter doctor</strong> y todo quedó en verde.</li>
+          <li>Creé el proyecto y lo corrí en un emulador.</li>
+          <li>Activé Firebase Auth, Firestore y Storage.</li>
+          <li>Entiendo que la seguridad es prioridad (datos de menores).</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>8) Errores comunes y soluciones</h2>
+        <div class="step">
+          <h4>Error: “No devices found”</h4>
+          <p>Abre Android Studio &gt; Device Manager &gt; Create device y ejecuta el emulador.</p>
+        </div>
+        <div class="step">
+          <h4>Error: “SDK not found”</h4>
+          <p>Instala el SDK desde Android Studio &gt; Settings &gt; Android SDK.</p>
+        </div>
+        <div class="step">
+          <h4>Error: “Gradle build failed”</h4>
+          <p>Revisa tu conexión a internet y vuelve a abrir el proyecto.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>9) Próximos pasos del proyecto</h2>
+        <p>
+          En la siguiente fase haremos las pantallas de login y el sistema de roles
+          con Firebase Authentication. Después construiremos el dashboard del maestro.
+        </p>
+      </div>
     </div>
   </body>
 </html>
