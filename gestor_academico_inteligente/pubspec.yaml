@@ -1,0 +1,71 @@
+name: gestor_academico_inteligente
+description: "Gestor Académico Inteligente - Sistema de gestión académica con asistencia QR, evaluaciones con IA y reportes automáticos."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Firebase
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.5.1
+  cloud_firestore: ^5.6.5
+  firebase_storage: ^12.4.4
+  firebase_messaging: ^15.2.4
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+
+  # Navigation
+  go_router: ^14.8.1
+
+  # Fonts
+  google_fonts: ^6.2.1
+
+  # QR & Scanner
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^6.0.5
+
+  # PDF & Reports
+  pdf: ^3.11.2
+  printing: ^5.14.2
+
+  # Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Security
+  crypto: ^3.0.6
+  flutter_secure_storage: ^9.2.4
+  encrypt: ^5.0.3
+
+  # AI
+  google_generative_ai: ^0.4.7
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  cached_network_image: ^3.4.1
+  image_picker: ^1.1.2
+  file_picker: ^8.1.7
+  fl_chart: ^0.70.2
+  shimmer: ^3.0.0
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
