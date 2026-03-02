@@ -19,43 +19,292 @@
       rel="stylesheet"
     />
 
-    <title>Miguel Alejandro</title>
+    <title>Gestor Académico Inteligente - Guía para Principiantes</title>
   </head>
   <body>
     <style>
-        :root{
-            --pomp-and-power: #8d6b94ff;
-            --feldgrau: #3c493fff;
-            --ash-gray: #b3bfb8ff;
-            --chili-red: #d64933ff;
-            --red: #ff101fff;
-        }
-        body{
-            background-color: var(--baby-power);
-        }
+      :root {
+        --admin: #6366f1;
+        --teacher: #10b981;
+        --student: #3b82f6;
+        --alert: #f59e0b;
+        --urgent: #ef4444;
+        --bg: #f9fafb;
+        --text: #1f2937;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+      }
+      .navbar {
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+      .navbar-brand {
+        color: #fff !important;
+        font-weight: 600;
+      }
+      .hero {
+        background: #fff;
+        border-bottom: 4px solid var(--admin);
+        padding: 40px 0;
+      }
+      .hero h1 {
+        margin-top: 0;
+        font-weight: 600;
+      }
+      .section {
+        padding: 28px 0;
+      }
+      .section h2 {
+        margin-top: 0;
+        font-weight: 600;
+      }
+      .badge-role {
+        padding: 6px 10px;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge-admin {
+        background: var(--admin);
+      }
+      .badge-teacher {
+        background: var(--teacher);
+      }
+      .badge-student {
+        background: var(--student);
+      }
+      .callout {
+        background: #fff;
+        border-left: 4px solid var(--alert);
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .screenshot {
+        background: #f3f4f6;
+        border: 1px dashed #cbd5f5;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 13px;
+      }
+      .checklist li {
+        margin-bottom: 8px;
+      }
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .footer {
+        padding: 20px 0 40px;
+        font-size: 13px;
+        color: #6b7280;
+      }
     </style>
 
-    <nav class="navbar navbar-light" style="background-color: var(--pomp-and-power);">
-     
-        <div class="container">
-            <a class="navbar-brand" href="index.html" style="background: var(--feldgrau);">Inicio</a>
-        </div>
-      </nav>
+    <nav class="navbar" style="background-color: var(--admin);">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Gestor Académico Inteligente</a>
+      </div>
+    </nav>
 
-    <div class="jumbotron"style="background-color: var(--ash-gray);">
-      <h1 class="display-4">Mi pagina web personal</h1>
-      <p class="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <hr class="my-4" />
-      <p>
-        It uses utility classes for typography and spacing to space content out
-        within the larger container.
-      </p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Continuar</a>
-      </p>
-    </div>
+    <header class="hero">
+      <div class="container">
+        <h1>Guía paso a paso para principiantes (0 experiencia)</h1>
+        <p class="lead">
+          Objetivo: ayudarte a crear tu primera app móvil que reduzca 70% del trabajo
+          administrativo del docente. Aquí no asumimos conocimiento técnico y te guiamos
+          desde la instalación hasta la primera ejecución.
+        </p>
+        <div class="callout">
+          <strong>Principio clave:</strong> “El código sin análisis previo es un error costoso”.
+          En cada paso explico por qué es importante y qué valor aporta al negocio.
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <h2>1) Qué vamos a construir (visión simple)</h2>
+        <p>
+          Construiremos un Gestor Académico Inteligente con tres niveles de acceso:
+        </p>
+        <ul>
+          <li><span class="badge-role badge-admin">ADMIN</span> Control total y 2FA obligatorio.</li>
+          <li><span class="badge-role badge-teacher">MAESTRO</span> Gestiona hasta 3 grupos y pase de lista.</li>
+          <li><span class="badge-role badge-student">ESTUDIANTE</span> Ve su perfil y marca asistencia.</li>
+        </ul>
+        <p><strong>Valor de negocio:</strong> ahorra tiempo, evita errores y protege datos de menores.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background: #fff;">
+      <div class="container">
+        <h2>2) Preparación del entorno (instalar herramientas)</h2>
+        <p>
+          Necesitas instalar estas herramientas. Copia exactamente los comandos.
+          Usaremos Flutter para crear apps para Android y iOS.
+        </p>
+        <ol>
+          <li>
+            <strong>Instala Flutter</strong>
+            <div class="screenshot">
+              Captura sugerida: página oficial de Flutter con botón “Get started”.
+            </div>
+            <p>Ve a <code>https://flutter.dev</code> y descarga la versión estable.</p>
+          </li>
+          <li>
+            <strong>Instala Android Studio</strong>
+            <div class="screenshot">
+              Captura sugerida: pantalla inicial de Android Studio con “New Flutter Project”.
+            </div>
+            <p>Incluye el SDK de Android. Es imprescindible para ejecutar la app.</p>
+          </li>
+          <li>
+            <strong>Configura variables y verifica instalación</strong>
+            <p>Abre la terminal y ejecuta:</p>
+            <pre><code>flutter doctor</code></pre>
+            <p>
+              Verás una lista con marcas verdes. Si aparece una X roja, revisa el
+              mensaje y sigue la indicación. Esto evita errores futuros.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>3) Crear tu primer proyecto Flutter</h2>
+        <p>
+          Este paso crea la base del proyecto. Lo hacemos antes de Firebase porque
+          Firebase necesita un proyecto Flutter existente.
+        </p>
+        <pre><code>flutter create gestor_academico
+cd gestor_academico</code></pre>
+        <div class="screenshot">
+          Captura sugerida: terminal mostrando “Project created successfully”.
+        </div>
+        <p>
+          Ahora abre el proyecto en Android Studio y confirma que ves las carpetas:
+          <code>lib/</code>, <code>android/</code>, <code>ios/</code>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="background: #fff;">
+      <div class="container">
+        <h2>4) Conectar Firebase (autenticación y base de datos)</h2>
+        <p>
+          Firebase guardará usuarios, grupos, asistencias y reportes. Esto es crítico
+          porque necesitamos privacidad y reglas de acceso estrictas.
+        </p>
+        <ol>
+          <li>Crea un proyecto en Firebase Console: <code>https://console.firebase.google.com</code>.</li>
+          <li>Agrega apps Android e iOS usando el mismo nombre del paquete Flutter.</li>
+          <li>Descarga los archivos de configuración y colócalos en el proyecto.</li>
+        </ol>
+        <div class="screenshot">
+          Captura sugerida: Firebase Console con el botón “Add app”.
+        </div>
+        <p><strong>Errores comunes:</strong> usar un nombre de paquete diferente provoca fallos al iniciar sesión.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>5) Estructura de roles y seguridad (visión simple)</h2>
+        <p>
+          La seguridad protege a menores y evita que un alumno vea datos de otro.
+          Aquí está la regla mental simple:
+        </p>
+        <ul>
+          <li>Admin ve todo.</li>
+          <li>Maestro ve solo sus grupos.</li>
+          <li>Estudiante ve solo su perfil.</li>
+        </ul>
+        <div class="callout">
+          Campos críticos encriptados: nombre, matrícula, calificaciones y asistencia.
+          Esto mantiene privacidad total si alguien accede a la base de datos.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: #fff;">
+      <div class="container">
+        <h2>6) Primer prototipo visual (pantallas clave)</h2>
+        <p>
+          Vamos a diseñar el prototipo antes de programar. Esto evita retrabajo y
+          ayuda a visualizar el flujo del usuario.
+        </p>
+        <div class="screenshot">
+          Captura sugerida: boceto simple con 3 pantallas: Login, Dashboard Maestro, Perfil Alumno.
+        </div>
+        <ul>
+          <li>Login con selección de rol.</li>
+          <li>Dashboard Maestro con botón “Generar QR”.</li>
+          <li>Perfil Alumno con asistencia mensual.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>7) Primer ejecución en emulador (tu gran momento)</h2>
+        <p>
+          Este paso confirma que el entorno funciona. Es la primera victoria y
+          evita frustraciones posteriores.
+        </p>
+        <ol>
+          <li>Abre Android Studio y crea un emulador (AVD).</li>
+          <li>En terminal, ejecuta:</li>
+        </ol>
+        <pre><code>flutter run</code></pre>
+        <div class="screenshot">
+          Captura sugerida: emulador abierto mostrando la app de Flutter en pantalla.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: #fff;">
+      <div class="container">
+        <h2>8) Checklist mínimo antes de seguir</h2>
+        <ul class="checklist">
+          <li>Flutter doctor con todo en verde.</li>
+          <li>Proyecto creado y abierto en Android Studio.</li>
+          <li>Firebase conectado sin errores.</li>
+          <li>Emulador ejecutando la app.</li>
+        </ul>
+        <p>
+          Si algo falla, revisa los pasos anteriores y valida el error en consola.
+          La mayoría de problemas se deben a rutas o SDKs incompletos.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>9) Próximas fases (ruta de aprendizaje)</h2>
+        <ol>
+          <li>Autenticación por rol (Admin, Maestro, Estudiante).</li>
+          <li>Dashboard Maestro con asistencia QR + código.</li>
+          <li>Evaluaciones con rúbricas + sugerencias IA.</li>
+          <li>Reportes automáticos y alertas inteligentes.</li>
+        </ol>
+        <p>
+          Cada fase agrega valor real al docente. El objetivo es lograr acciones
+          críticas en menos de 3 segundos.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        Frase clave: “Una app educativa exitosa no es la más bonita – es la que protege
+        a los alumnos mientras reduce el trabajo del maestro en un 70%.”
+      </div>
+    </footer>
   </body>
 </html>
